@@ -4,14 +4,14 @@ import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
-import com.reha.casestudy.R
 import com.reha.casestudy.base.BaseActivity
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.extension.TAG
 import com.reha.casestudy.feature.github.presentation.repodetail.RepoDetailFragment
 import com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment
+import dagger.hilt.android.AndroidEntryPoint
 
-
+@AndroidEntryPoint
 class MainActivity : BaseActivity() {
 
     private val progressFl by lazy { findViewById<FrameLayout>(R.id.progressbar_fl) }

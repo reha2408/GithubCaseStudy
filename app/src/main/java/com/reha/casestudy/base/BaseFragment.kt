@@ -9,26 +9,24 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.reha.casestudy.App
-import com.reha.casestudy.di.base.AppComponent
 import com.reha.casestudy.extension.observeLiveData
-import javax.inject.Inject
+import com.reha.casestudy.BR
 
-abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment() {
-
-    val appComponent: AppComponent by lazy(mode = LazyThreadSafetyMode.NONE) {
-        (activity?.application as App).component()
-    }
-
-    @Inject
-    lateinit var viewModelFactory: ViewModelProvider.Factory
+abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutId(): Int
 
+    protected abstract fun getViewModelClass(): Class<V>
+
     protected lateinit var binding: T
 
     protected lateinit var viewModel: V
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        viewModel = provideViewModel()
+    }
 
     override fun onCreateView(
             inflater: LayoutInflater,
@@ -36,7 +34,8 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment()
             savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
-        binding.lifecycleOwner = this
+        binding.lifecycleOwner = this.viewLifecycleOwner
+        binding.setVariable(BR.viewModel, viewModel)
         return binding.root
     }
 
@@ -72,4 +71,6 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment()
     protected fun onBackPressed() {
         activity?.onBackPressed()
     }
+
+    private fun provideViewModel() = ViewModelProvider(this).get(getViewModelClass())
 }

@@ -6,8 +6,9 @@ import com.reha.casestudy.R
 import com.reha.casestudy.base.BaseFragment
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoDetailFragmentBinding
-import com.reha.casestudy.extension.viewModel
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBinding>() {
 
     companion object {
@@ -18,17 +19,8 @@ class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBi
         }
     }
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        appComponent.inject(this)
-        viewModel = viewModel(viewModelFactory) {
-            // do something with viewmodel.
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding.viewModel = viewModel
         val repo = arguments?.get("repo") as Repo
         observeViewModel()
         initUi(repo)
@@ -46,4 +38,6 @@ class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBi
     }
 
     override fun getLayoutId() = R.layout.repo_detail_fragment
+
+    override fun getViewModelClass() = RepoDetailViewModel::class.java
 }

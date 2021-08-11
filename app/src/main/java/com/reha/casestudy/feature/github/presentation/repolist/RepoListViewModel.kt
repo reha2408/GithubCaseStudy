@@ -8,8 +8,10 @@ import com.reha.casestudy.base.BaseViewModel
 import com.reha.casestudy.feature.github.domain.interactor.GithubApiSearch
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
+import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
+@HiltViewModel
 class RepoListViewModel @Inject constructor(
     private val githubApiSearch: GithubApiSearch,
     private val pref: SharedPreferences
