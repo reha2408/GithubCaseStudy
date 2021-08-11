@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">CaseStudy</string>
+    <string name="searchHint">Enter Github Username</string>
+    <string name="search">Search</string>
+</resources>
