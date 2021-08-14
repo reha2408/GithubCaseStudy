@@ -163,4 +163,7 @@ dependencies {
 
     // UI Tests
     androidTestImplementation("androidx.compose.ui:ui-test-junit4:1.0.1")
+
+    // ConstraintLayout dsl
+    implementation "androidx.constraintlayout:constraintlayout-compose:1.0.0-beta02"
 }
