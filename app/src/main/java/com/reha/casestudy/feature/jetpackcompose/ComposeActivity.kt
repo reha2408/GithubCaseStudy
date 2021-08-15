@@ -122,12 +122,11 @@ fun Counter(count: Int, updateCount: (Int) -> Unit) {
     Button(
         onClick = { updateCount(count + 1) },
         colors = ButtonDefaults.buttonColors(
-            backgroundColor = if (count > 5) Color.Green else Color.White
+            backgroundColor = if (count > 5) MaterialTheme.colors.primary else MaterialTheme.colors.primaryVariant
         )
     ) {
         Text(
             text = "I've been clicked $count times",
-            color = MaterialTheme.colors.primary
         )
     }
 }
