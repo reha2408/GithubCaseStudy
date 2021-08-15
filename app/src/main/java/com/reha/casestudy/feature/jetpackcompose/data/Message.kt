@@ -1,3 +1,9 @@
 package com.reha.casestudy.feature.jetpackcompose.data
 
-data class Message(val author: String, val body: String)
+import com.reha.casestudy.R
+
+data class Message(
+    val author: String,
+    val body: String,
+    var lastOnline: String = ""
+)
