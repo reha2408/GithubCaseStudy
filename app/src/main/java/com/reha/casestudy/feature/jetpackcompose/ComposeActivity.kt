@@ -14,10 +14,7 @@ import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.shape.CircleShape
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.material.TopAppBar
+import androidx.compose.material.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -34,7 +31,9 @@ class ComposeActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContent {
-            PageUi()
+            PageContainer {
+                Content()
+            }
         }
     }
 }
@@ -42,31 +41,32 @@ class ComposeActivity : ComponentActivity() {
 @Composable
 fun PageContainer(content: @Composable () -> Unit) {
     GithubCaseStudyTheme {
-        Column(
-            Modifier
-                .background(MaterialTheme.colors.background)
-                .fillMaxSize()
-        ) {
+        Surface(color = MaterialTheme.colors.background) {
             content()
         }
     }
 }
 
 @Composable
-fun PageUi() {
-    PageContainer {
+fun Content() {
+    Column(modifier = Modifier.fillMaxHeight()) {
+        val conversations = SampleData.conversationSample
+        val counterState = remember { mutableStateOf(0)}
         TopAppBar {
 
         }
-        val conversations = SampleData.conversationSample
-        Conversation(messages = conversations)
+        Conversation(messages = conversations, Modifier.weight(1f))
+        Counter(
+            count = counterState.value,
+            updateCount = { counterState.value = it }
+        )
     }
 }
 
 @Composable
-fun Conversation(messages: List<Message>) {
-    LazyColumn {
-        items(messages) {  MessageCard(it) }
+fun Conversation(messages: List<Message>, modifier: Modifier = Modifier) {
+    LazyColumn(modifier = modifier) {
+        items(messages) { MessageCard(it) }
     }
 }
 
@@ -74,7 +74,8 @@ fun Conversation(messages: List<Message>) {
 fun MessageCard(message: Message) {
     Row(modifier = Modifier
         .padding(all = 12.dp)
-        .fillMaxWidth()) {
+        .fillMaxWidth()
+    ) {
         Image(
             painter = painterResource(R.drawable.ex_android),
             contentDescription = "Logo",
@@ -113,6 +114,28 @@ fun MessageCard(message: Message) {
                 )
             }
         }
+    }
+}
+
+@Composable
+fun Counter(count: Int, updateCount: (Int) -> Unit) {
+    Button(
+        onClick = { updateCount(count + 1) },
+        colors = ButtonDefaults.buttonColors(
+            backgroundColor = if (count > 5) Color.Green else Color.White
+        )
+    ) {
+        Text(
+            text = "I've been clicked $count times",
+            color = MaterialTheme.colors.primary
+        )
+    }
+}
+
+@Composable
+fun PageUi() {
+    PageContainer {
+        Content()
     }
 }
 
