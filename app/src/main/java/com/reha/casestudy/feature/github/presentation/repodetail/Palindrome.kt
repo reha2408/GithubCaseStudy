@@ -4,9 +4,23 @@ import java.lang.NumberFormatException
 
 fun main() {
     longestPalindrome("asdasas")
-    val x = 123
-    print(reverseInteger(x))
+    val x = 1534236469
+    print(reverseInteger2(x))
 }
+
+fun reverseInteger2(n: Int): Int {
+    var x = n
+    var rev = 0
+    while (x != 0) {
+        val pop = x % 10
+        x /= 10
+        if (rev > Integer.MAX_VALUE / 10 || (rev == Integer.MAX_VALUE / 10 && pop > 7)) return 0;
+        if (rev < Integer.MIN_VALUE / 10 || (rev == Integer.MIN_VALUE / 10 && pop < -8)) return 0;
+        rev = rev * 10 + pop
+    }
+    return rev
+}
+
 
 fun reverseInteger(x: Int): String {
     if (x/10 == 0) {
