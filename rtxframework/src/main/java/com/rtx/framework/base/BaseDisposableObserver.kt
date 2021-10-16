@@ -1,4 +1,4 @@
-package com.reha.casestudy.base
+package com.rtx.framework.base
 
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response

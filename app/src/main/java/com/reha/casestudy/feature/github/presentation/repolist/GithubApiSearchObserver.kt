@@ -1,6 +1,6 @@
 package com.reha.casestudy.feature.github.presentation.repolist
 
-import com.reha.casestudy.base.BaseDisposableObserver
+import com.rtx.framework.base.BaseDisposableObserver
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
 

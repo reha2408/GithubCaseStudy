@@ -1,4 +1,4 @@
-package com.reha.casestudy.base
+package com.reha.casestudy.network
 
 import com.reha.casestudy.feature.github.data.request.SearchRequest
 import retrofit2.Converter

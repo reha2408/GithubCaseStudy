@@ -1,6 +1,6 @@
 package com.reha.casestudy.feature.github.domain.interactor
 
-import com.reha.casestudy.base.RequestUseCase
+import com.rtx.framework.base.RequestUseCase
 import com.reha.casestudy.feature.github.domain.GitHubRepository
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.request.SearchRequest

@@ -1,4 +1,4 @@
-package com.reha.casestudy.di.hilt
+package com.reha.casestudy.di
 
 import android.app.Application
 import android.content.Context
@@ -6,11 +6,11 @@ import android.content.SharedPreferences
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import com.reha.casestudy.BuildConfig
-import com.reha.casestudy.base.SearchConverterFactory
 import com.reha.casestudy.feature.github.data.GitHubApiService
 import com.reha.casestudy.feature.github.data.repo.GitHubDataRepository
 import com.reha.casestudy.feature.github.data.repo.datasource.GithubRemoteDataSource
 import com.reha.casestudy.feature.github.domain.GitHubRepository
+import com.reha.casestudy.network.SearchConverterFactory
 import com.squareup.picasso.Picasso
 import dagger.Module
 import dagger.Provides

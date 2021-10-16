@@ -4,7 +4,7 @@ import android.content.SharedPreferences
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.reha.casestudy.base.BaseViewModel
+import com.rtx.framework.base.BaseViewModel
 import com.reha.casestudy.feature.github.domain.interactor.GithubApiSearch
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity

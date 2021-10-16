@@ -3,14 +3,15 @@ package com.reha.casestudy.feature.github.presentation.repolist
 import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.reha.casestudy.BR
 import com.reha.casestudy.MainActivity
 import com.reha.casestudy.R
-import com.reha.casestudy.base.BaseFragment
+import com.rtx.framework.base.BaseFragment
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoListFragmentBinding
-import com.reha.casestudy.extension.hideSoftKeyboard
-import com.reha.casestudy.extension.observeLiveData
-import com.reha.casestudy.extension.showSoftKeyboard
+import com.rtx.framework.extension.hideSoftKeyboard
+import com.rtx.framework.extension.observeLiveData
+import com.rtx.framework.extension.showSoftKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -54,6 +55,8 @@ class RepoListFragment: BaseFragment<RepoListViewModel, RepoListFragmentBinding>
     }
 
     override fun getLayoutId() = R.layout.repo_list_fragment
+
+    override fun getBRViewModelId() = BR.viewModel
 
     override fun getViewModelClass() = RepoListViewModel::class.java
 }

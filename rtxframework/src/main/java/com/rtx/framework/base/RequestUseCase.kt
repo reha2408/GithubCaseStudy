@@ -1,4 +1,4 @@
-package com.reha.casestudy.base
+package com.rtx.framework.base
 
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers

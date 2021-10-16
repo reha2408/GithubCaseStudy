@@ -1,4 +1,4 @@
-package com.reha.casestudy.base
+package com.rtx.framework.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,13 +9,15 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
-import com.reha.casestudy.extension.observeLiveData
-import com.reha.casestudy.BR
+import com.rtx.framework.extension.observeLiveData
+
 
 abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutId(): Int
+
+    abstract fun getBRViewModelId(): Int
 
     protected abstract fun getViewModelClass(): Class<V>
 
@@ -35,7 +37,7 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = this.viewLifecycleOwner
-        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(getBRViewModelId(), viewModel)
         return binding.root
     }
 

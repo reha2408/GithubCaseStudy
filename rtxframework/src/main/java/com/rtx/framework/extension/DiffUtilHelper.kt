@@ -1,4 +1,4 @@
-package com.reha.casestudy.extension
+package com.rtx.framework.extension
 
 import androidx.recyclerview.widget.DiffUtil
 

@@ -2,11 +2,11 @@ package com.reha.casestudy.feature.github.presentation.repolist
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
-import com.reha.casestudy.base.BaseListAdapter
-import com.reha.casestudy.base.BaseViewHolder
+import com.rtx.framework.base.BaseListAdapter
+import com.rtx.framework.base.BaseViewHolder
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoRowBinding
-import com.reha.casestudy.extension.createDiffCallback
+import com.rtx.framework.extension.createDiffCallback
 
 class RepoAdapter(itemClickListener: (Repo) -> Unit) : BaseListAdapter<Repo>(
     createDiffCallback { oldItem, newItem -> oldItem.id == newItem.id },

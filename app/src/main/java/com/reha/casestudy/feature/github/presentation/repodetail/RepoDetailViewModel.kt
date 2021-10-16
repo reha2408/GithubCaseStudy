@@ -2,7 +2,7 @@ package com.reha.casestudy.feature.github.presentation.repodetail
 
 import android.content.SharedPreferences
 import androidx.databinding.ObservableField
-import com.reha.casestudy.base.BaseViewModel
+import com.rtx.framework.base.BaseViewModel
 import com.reha.casestudy.feature.github.data.model.Repo
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject

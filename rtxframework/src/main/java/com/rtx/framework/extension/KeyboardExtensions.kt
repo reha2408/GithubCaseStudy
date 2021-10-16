@@ -1,4 +1,4 @@
-package com.reha.casestudy.extension
+package com.rtx.framework.extension
 
 import android.app.Activity
 import android.content.Context

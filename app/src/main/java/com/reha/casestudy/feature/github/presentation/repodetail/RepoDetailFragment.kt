@@ -2,8 +2,9 @@ package com.reha.casestudy.feature.github.presentation.repodetail
 
 import android.os.Bundle
 import android.view.View
+import com.reha.casestudy.BR
 import com.reha.casestudy.R
-import com.reha.casestudy.base.BaseFragment
+import com.rtx.framework.base.BaseFragment
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoDetailFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
@@ -38,6 +39,8 @@ class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBi
     }
 
     override fun getLayoutId() = R.layout.repo_detail_fragment
+
+    override fun getBRViewModelId() = BR.viewModel
 
     override fun getViewModelClass() = RepoDetailViewModel::class.java
 }

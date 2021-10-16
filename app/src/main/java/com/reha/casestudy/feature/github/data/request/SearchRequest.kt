@@ -1,5 +1,5 @@
 package com.reha.casestudy.feature.github.data.request
 
-import com.reha.casestudy.base.BaseRequest
+import com.rtx.framework.base.BaseRequest
 
 data class SearchRequest(var name:String? = null) : BaseRequest()

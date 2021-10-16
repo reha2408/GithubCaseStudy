@@ -1,4 +1,4 @@
-package com.reha.casestudy.base
+package com.rtx.framework.base
 
 enum class ResponseCode(val message: String) {
     SUCCESS("Success"),
