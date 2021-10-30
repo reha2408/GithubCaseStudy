@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    id 'maven-publish'
+    // id 'maven-publish'
 }
 
 android {
@@ -30,13 +30,13 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
     }
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    afterEvaluate {
+    /*afterEvaluate {
         publishing {
             publications {
                 // Creates a Maven publication called "release".
@@ -60,7 +60,7 @@ android {
                 }
             }
         }
-    }
+    }*/
 }
 
 ext.versions = [
