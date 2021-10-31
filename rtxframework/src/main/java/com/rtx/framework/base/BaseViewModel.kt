@@ -12,6 +12,9 @@ abstract class BaseViewModel : ViewModel(){
     private val progress = MutableLiveData<ResponseSubscriptionStatus>()
     val progressLiveData : MutableLiveData<ResponseSubscriptionStatus> get() = progress
 
+    private val errorMessage = MutableLiveData<String>()
+    val errorMessageLiveData : MutableLiveData<String> get() = errorMessage
+
     override fun onCleared(){
         super.onCleared()
         compositeDisposable.clear()
@@ -19,6 +22,10 @@ abstract class BaseViewModel : ViewModel(){
 
     fun addDisposable(disposable: Disposable) {
         compositeDisposable.add(disposable)
+    }
+
+    fun handleError(message: String?) {
+        errorMessage.value = message
     }
 }
 

@@ -8,28 +8,43 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel): Disp
     override fun onSuccess(response: Response<R>) {
         when(val code = getCode(response)) {
             ResponseCode.SUCCESS -> handleSuccess(response.body())
-            else -> handleError(code.message)
+            else -> handleError(response.body(), response.code())
         }
     }
 
     private fun getCode(response: Response<R>) = if (response.code() == 200) ResponseCode.SUCCESS
-        else if (response.code() == 404) ResponseCode.NOT_FOUND_ERROR
         else ResponseCode.API_ERROR
 
     override fun onError(e: Throwable) {
-        handleError(ResponseCode.NETWORK_FAIL.message)
+        val message = if (useDefaultNetworkErrorMessage) networkErrorMessage else e.message ?: networkErrorMessage
+        onNetworkError(message)
     }
 
     private fun handleSuccess(content: R?) {
         onResponseSuccess(content)
     }
 
-    private fun handleError(errorMessage: String) {
-        onResponseError(errorMessage)
+    private fun handleError(content: R?, code: Int) {
+        onResponseError(content, code)
     }
 
     abstract fun onResponseSuccess(response: R?)
 
-    abstract fun onResponseError(errorMessage: String)
+    open fun onResponseError(response: R?, code: Int) {
+        if (handleErrorInBase) {
+            baseViewModel.errorMessageLiveData.postValue(apiErrorMessage)
+        }
+    }
 
+    open fun onNetworkError(message: String) {
+        if (handleNetworkErrorInBase) {
+            baseViewModel.errorMessageLiveData.postValue(message)
+        }
+    }
+
+    open val handleErrorInBase: Boolean = true
+    open val handleNetworkErrorInBase: Boolean = true
+    open val useDefaultNetworkErrorMessage: Boolean = false
+    open var networkErrorMessage: String = ResponseCode.NETWORK_FAIL.message
+    open var apiErrorMessage: String = ResponseCode.API_ERROR.message
 }

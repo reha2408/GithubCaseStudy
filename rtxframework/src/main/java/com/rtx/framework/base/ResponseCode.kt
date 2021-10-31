@@ -3,8 +3,7 @@ package com.rtx.framework.base
 enum class ResponseCode(val message: String) {
     SUCCESS("Success"),
     NETWORK_FAIL("Network failed."),
-    API_ERROR("Github Api error occurred."),
-    NOT_FOUND_ERROR("User not found.")
+    API_ERROR("Api error occurred.")
 }
 
 
