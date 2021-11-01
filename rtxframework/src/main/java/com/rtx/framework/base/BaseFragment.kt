@@ -53,7 +53,7 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment
                     }
                 }
             }
-            observeLiveData(errorMessageLiveData) {
+            observeLiveData(uiMessageLiveData) {
                 showError(it)
             }
         }

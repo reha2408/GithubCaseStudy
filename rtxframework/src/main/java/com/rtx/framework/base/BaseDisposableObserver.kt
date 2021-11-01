@@ -1,5 +1,6 @@
 package com.rtx.framework.base
 
+import com.rtx.framework.model.UiMessage
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
 
@@ -32,13 +33,13 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel): Disp
 
     open fun onResponseError(response: R?, code: Int) {
         if (handleErrorInBase) {
-            baseViewModel.errorMessageLiveData.postValue(apiErrorMessage)
+            baseViewModel.uiMessageLiveData.postValue(UiMessage(apiErrorMessage))
         }
     }
 
     open fun onNetworkError(message: String) {
         if (handleNetworkErrorInBase) {
-            baseViewModel.errorMessageLiveData.postValue(message)
+            baseViewModel.uiMessageLiveData.postValue(UiMessage(message))
         }
     }
 
