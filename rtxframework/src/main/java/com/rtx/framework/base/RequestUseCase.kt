@@ -18,9 +18,6 @@ abstract class RequestUseCase<R, Params> : BaseUseCase() {
             .doOnSubscribe {
                 progressLiveData.postValue(ResponseSubscriptionStatus.SUBSCRIBED)
             }
-            .doAfterTerminate {
-                progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
-            }
             .subscribeWith(observer)
         )
     }

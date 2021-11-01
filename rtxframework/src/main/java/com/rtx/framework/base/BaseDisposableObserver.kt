@@ -7,6 +7,7 @@ import retrofit2.Response
 abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel): DisposableSingleObserver<Response<R>>() {
 
     override fun onSuccess(response: Response<R>) {
+        baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
         when(val code = getCode(response)) {
             ResponseCode.SUCCESS -> handleSuccess(response.body())
             else -> handleError(response.body(), response.code())
@@ -17,6 +18,7 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel): Disp
         else ResponseCode.API_ERROR
 
     override fun onError(e: Throwable) {
+        baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
         val message = if (useDefaultNetworkErrorMessage) networkErrorMessage else e.message ?: networkErrorMessage
         onNetworkError(message)
     }
