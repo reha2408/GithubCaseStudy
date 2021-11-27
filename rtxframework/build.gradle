@@ -2,7 +2,7 @@ plugins {
     id 'com.android.library'
     id 'kotlin-android'
     id 'kotlin-kapt'
-    // id 'maven-publish'
+    id 'maven-publish'
 }
 
 android {
@@ -36,7 +36,7 @@ android {
     kotlinOptions {
         jvmTarget = '1.8'
     }
-    /*afterEvaluate {
+    afterEvaluate {
         publishing {
             publications {
                 // Creates a Maven publication called "release".
@@ -45,8 +45,8 @@ android {
                     from components.release
 
                     // You can then customize attributes of the publication as shown below.
-                    groupId = 'com.rtx.framework'
-                    artifactId = 'final'
+                    groupId = 'com.rtx'
+                    artifactId = 'framework'
                     version = '1.0'
                 }
                 // Creates a Maven publication called “debug”.
@@ -54,13 +54,13 @@ android {
                     // Applies the component for the debug build variant.
                     from components.debug
 
-                    groupId = 'com.rtx.framework'
-                    artifactId = 'final-debug'
+                    groupId = 'com.rtx'
+                    artifactId = 'framework'
                     version = '1.0'
                 }
             }
         }
-    }*/
+    }
 }
 
 ext.versions = [
