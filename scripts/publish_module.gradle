@@ -75,7 +75,7 @@ afterEvaluate {
                     scm {
                         connection = 'scm:git:github.com/reha2408/GithubCaseStudy.git'
                         developerConnection = 'scm:git:ssh://github.com/reha2408/GithubCaseStudy.git'
-                        url = 'https://github.com/reha2408/GithubCaseStudy/tree/jetpackcompose'
+                        url = 'https://github.com/reha2408/GithubCaseStudy/tree/main'
                     }
                 }
             }
