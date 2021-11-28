@@ -76,9 +76,11 @@ afterEvaluate {
         description = "Publish rtx-framework"
         group = "Publish rtx-framework"
         dependsOn ":rtxframework:ktlint"
+        dependsOn ":rtxframework:detekt"
         dependsOn ":rtxframework:publishReleasePublicationToSonatypeRepository"
         dependsOn ":closeAndReleaseSonatypeStagingRepository"
-        tasks.findByPath(":rtxframework:publishReleasePublicationToSonatypeRepository").mustRunAfter(":rtxframework:ktlint")
+        tasks.findByPath(":rtxframework:detekt").mustRunAfter(":rtxframework:ktlint")
+        tasks.findByPath(":rtxframework:publishReleasePublicationToSonatypeRepository").mustRunAfter(":rtxframework:detekt")
         tasks.findByPath(":closeAndReleaseSonatypeStagingRepository").mustRunAfter(":rtxframework:publishReleasePublicationToSonatypeRepository")
     }
 }

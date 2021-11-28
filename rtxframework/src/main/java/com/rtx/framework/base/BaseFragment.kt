@@ -12,7 +12,7 @@ import androidx.lifecycle.ViewModelProvider
 import com.rtx.framework.extension.observeLiveData
 import com.rtx.framework.extension.showError
 
-abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment() {
+abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment() {
 
     @LayoutRes
     abstract fun getLayoutId(): Int

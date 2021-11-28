@@ -15,7 +15,7 @@ data class UiMessage(
         Type.NONE
     }
 
-    enum class Type() {
+    enum class Type {
         TEXT,
         ID,
         NONE
