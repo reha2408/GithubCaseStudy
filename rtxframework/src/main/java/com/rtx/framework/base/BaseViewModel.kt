@@ -6,17 +6,17 @@ import com.rtx.framework.model.UiMessage
 import io.reactivex.disposables.CompositeDisposable
 import io.reactivex.disposables.Disposable
 
-abstract class BaseViewModel : ViewModel(){
+abstract class BaseViewModel : ViewModel() {
 
     val compositeDisposable = CompositeDisposable()
 
     private val progress = MutableLiveData<ResponseSubscriptionStatus>()
-    val progressLiveData : MutableLiveData<ResponseSubscriptionStatus> get() = progress
+    val progressLiveData: MutableLiveData<ResponseSubscriptionStatus> get() = progress
 
     private val uiMessage = MutableLiveData<UiMessage>()
-    val uiMessageLiveData : MutableLiveData<UiMessage> get() = uiMessage
+    val uiMessageLiveData: MutableLiveData<UiMessage> get() = uiMessage
 
-    override fun onCleared(){
+    override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
     }

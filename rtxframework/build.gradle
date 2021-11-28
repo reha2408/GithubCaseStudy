@@ -11,6 +11,7 @@ ext {
     PUBLISH_ARTIFACT_ID = 'rtx-framework'
 }
 
+apply from: "${rootProject.projectDir}/scripts/code_quality.gradle"
 apply from: "${rootProject.projectDir}/scripts/publish_module.gradle"
 
 android {

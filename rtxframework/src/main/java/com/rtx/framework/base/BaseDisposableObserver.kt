@@ -4,18 +4,18 @@ import com.rtx.framework.model.UiMessage
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
 
-abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel): DisposableSingleObserver<Response<R>>() {
+abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : DisposableSingleObserver<Response<R>>() {
 
     override fun onSuccess(response: Response<R>) {
         baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
-        when(val code = getCode(response)) {
+        when (val code = getCode(response)) {
             ResponseCode.SUCCESS -> handleSuccess(response.body())
             else -> handleError(response.body(), response.code())
         }
     }
 
     private fun getCode(response: Response<R>) = if (response.code() == 200) ResponseCode.SUCCESS
-        else ResponseCode.API_ERROR
+    else ResponseCode.API_ERROR
 
     override fun onError(e: Throwable) {
         baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)

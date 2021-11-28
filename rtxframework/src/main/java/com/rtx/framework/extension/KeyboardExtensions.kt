@@ -14,7 +14,7 @@ internal fun isLegacyModeActive() = Build.VERSION.SDK_INT < Build.VERSION_CODES.
 fun View.showSoftKeyboard() = post {
     takeIf { requestFocus() }?.run {
         if (isLegacyModeActive()) {
-            (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.showSoftInput(this,InputMethodManager.SHOW_FORCED)
+            (context.getSystemService(Context.INPUT_METHOD_SERVICE) as? InputMethodManager)?.showSoftInput(this, InputMethodManager.SHOW_FORCED)
         } else {
             ViewCompat.getWindowInsetsController(this)?.show(WindowInsetsCompat.Type.ime())
         }

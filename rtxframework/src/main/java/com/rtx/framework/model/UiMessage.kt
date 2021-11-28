@@ -21,5 +21,3 @@ data class UiMessage(
         NONE
     }
 }
-
-

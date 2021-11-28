@@ -22,15 +22,6 @@ group = PUBLISH_GROUP_ID
 version = PUBLISH_VERSION
 
 afterEvaluate {
-    tasks.create("publishRtx") {
-        description = "Publish rtx-framework"
-        group = "Publish rtx-framework"
-
-        dependsOn ":rtxframework:publishReleasePublicationToSonatypeRepository"
-        dependsOn ":closeAndReleaseSonatypeStagingRepository"
-        tasks.findByPath(":closeAndReleaseSonatypeStagingRepository").mustRunAfter(":rtxframework:publishReleasePublicationToSonatypeRepository")
-    }
-
     publishing {
         publications {
             release(MavenPublication) {
@@ -80,6 +71,15 @@ afterEvaluate {
                 }
             }
         }
+    }
+    tasks.create("publishRtx") {
+        description = "Publish rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:ktlint"
+        dependsOn ":rtxframework:publishReleasePublicationToSonatypeRepository"
+        dependsOn ":closeAndReleaseSonatypeStagingRepository"
+        tasks.findByPath(":rtxframework:publishReleasePublicationToSonatypeRepository").mustRunAfter(":rtxframework:ktlint")
+        tasks.findByPath(":closeAndReleaseSonatypeStagingRepository").mustRunAfter(":rtxframework:publishReleasePublicationToSonatypeRepository")
     }
 }
 

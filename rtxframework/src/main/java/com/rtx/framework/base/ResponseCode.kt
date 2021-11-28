@@ -5,5 +5,3 @@ enum class ResponseCode(val message: String) {
     NETWORK_FAIL("Network failed."),
     API_ERROR("Api error occurred.")
 }
-
-

@@ -7,18 +7,19 @@ import retrofit2.Response
 
 abstract class RequestUseCase<R, Params> : BaseUseCase() {
 
-    abstract fun  buildUseCaseObservable(params:Params): Single<Response<R>>
+    abstract fun buildUseCaseObservable(params: Params): Single<Response<R>>
 
     fun execute(observer: BaseDisposableObserver<R>, params: Params) {
         val progressLiveData = observer.baseViewModel.progressLiveData
 
-        add(buildUseCaseObservable(params)
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeOn(Schedulers.io())
-            .doOnSubscribe {
-                progressLiveData.postValue(ResponseSubscriptionStatus.SUBSCRIBED)
-            }
-            .subscribeWith(observer)
+        add(
+            buildUseCaseObservable(params)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .doOnSubscribe {
+                    progressLiveData.postValue(ResponseSubscriptionStatus.SUBSCRIBED)
+                }
+                .subscribeWith(observer)
         )
     }
 }

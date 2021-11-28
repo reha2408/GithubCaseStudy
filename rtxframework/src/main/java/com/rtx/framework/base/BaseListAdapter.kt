@@ -7,7 +7,6 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-
 /**
  * Base adapter to reduce boilerplate on creating / binding view holders.
  */

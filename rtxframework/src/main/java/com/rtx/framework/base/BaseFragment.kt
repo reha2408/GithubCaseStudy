@@ -12,7 +12,6 @@ import androidx.lifecycle.ViewModelProvider
 import com.rtx.framework.extension.observeLiveData
 import com.rtx.framework.extension.showError
 
-
 abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment() {
 
     @LayoutRes
@@ -32,9 +31,9 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding>() : Fragment
     }
 
     override fun onCreateView(
-            inflater: LayoutInflater,
-            container: ViewGroup?,
-            savedInstanceState: Bundle?
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
     ): View? {
         binding = DataBindingUtil.inflate(inflater, getLayoutId(), container, false)
         binding.lifecycleOwner = this.viewLifecycleOwner
