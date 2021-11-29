@@ -3,8 +3,15 @@ package com.rtx.framework.base
 import com.rtx.framework.model.UiMessage
 import io.reactivex.observers.DisposableSingleObserver
 import retrofit2.Response
+import java.net.HttpURLConnection
 
 abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : DisposableSingleObserver<Response<R>>() {
+
+    open val handleErrorInBase: Boolean = true
+    open val handleNetworkErrorInBase: Boolean = true
+    open val useDefaultNetworkErrorMessage: Boolean = false
+    open var networkErrorMessage: String = ResponseCode.NETWORK_FAIL.message
+    open var apiErrorMessage: String = ResponseCode.API_ERROR.message
 
     override fun onSuccess(response: Response<R>) {
         baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
@@ -14,7 +21,7 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : Dis
         }
     }
 
-    private fun getCode(response: Response<R>) = if (response.code() == 200) ResponseCode.SUCCESS
+    private fun getCode(response: Response<R>) = if (response.code() == HttpURLConnection.HTTP_OK) ResponseCode.SUCCESS
     else ResponseCode.API_ERROR
 
     override fun onError(e: Throwable) {
@@ -44,10 +51,4 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : Dis
             baseViewModel.uiMessageLiveData.postValue(UiMessage(message))
         }
     }
-
-    open val handleErrorInBase: Boolean = true
-    open val handleNetworkErrorInBase: Boolean = true
-    open val useDefaultNetworkErrorMessage: Boolean = false
-    open var networkErrorMessage: String = ResponseCode.NETWORK_FAIL.message
-    open var apiErrorMessage: String = ResponseCode.API_ERROR.message
 }

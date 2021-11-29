@@ -12,7 +12,12 @@ import androidx.lifecycle.ViewModelProvider
 import com.rtx.framework.extension.observeLiveData
 import com.rtx.framework.extension.showError
 
+@Suppress("TooManyFunctions")
 abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment() {
+
+    protected lateinit var binding: T
+
+    protected lateinit var viewModel: V
 
     @LayoutRes
     abstract fun getLayoutId(): Int
@@ -20,10 +25,6 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment()
     abstract fun getBRViewModelId(): Int
 
     protected abstract fun getViewModelClass(): Class<V>
-
-    protected lateinit var binding: T
-
-    protected lateinit var viewModel: V
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
