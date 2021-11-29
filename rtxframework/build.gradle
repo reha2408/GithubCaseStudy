@@ -7,11 +7,11 @@ plugins {
 
 ext {
     PUBLISH_GROUP_ID = 'io.github.reha2408'
-    PUBLISH_VERSION = '1.0.3'
+    PUBLISH_VERSION = '1.0.4'
     PUBLISH_ARTIFACT_ID = 'rtx-framework'
 }
 
-apply from: "${rootProject.projectDir}/scripts/code_quality.gradle"
+apply from: "${rootProject.projectDir}/scripts/ktlint.gradle"
 apply from: "${rootProject.projectDir}/scripts/publish_module.gradle"
 
 android {

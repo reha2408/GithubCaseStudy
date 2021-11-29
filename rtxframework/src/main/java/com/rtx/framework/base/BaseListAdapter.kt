@@ -30,11 +30,11 @@ abstract class BaseListAdapter<T>(
 
     override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
         currentList.get(position)?.also { item ->
-
-            holder.itemView.setOnClickListener { view ->
-                clickListener?.invoke(item)
+            clickListener?.let {
+                holder.itemView.setOnClickListener { _ ->
+                    it.invoke(item)
+                }
             }
-
             holder.bind(item)
         }
     }
