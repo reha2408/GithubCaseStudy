@@ -1,0 +1,66 @@
+afterEvaluate {
+    tasks.create("publishRtx") {
+        description = "Publish rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:ktlint"
+        dependsOn ":rtxframework:detekt"
+        dependsOn ":rtxframework:publishReleasePublicationToSonatypeRepository"
+        dependsOn ":closeAndReleaseSonatypeStagingRepository"
+        tasks.findByPath(":rtxframework:detekt").mustRunAfter(":rtxframework:ktlint")
+        tasks.findByPath(":rtxframework:publishReleasePublicationToSonatypeRepository").mustRunAfter(":rtxframework:detekt")
+        tasks.findByPath(":closeAndReleaseSonatypeStagingRepository").mustRunAfter(":rtxframework:publishReleasePublicationToSonatypeRepository")
+    }
+    tasks.create("codeQualityRtx") {
+        description = "Code Quality rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:ktlint"
+        dependsOn ":rtxframework:detekt"
+    }
+    tasks.create("unitTestRtx") {
+        description = "Unit Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:testDebugUnitTest"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/rtxframework/build/reports/tests/testDebugUnitTest/index.html"
+            }
+        }
+    }
+    tasks.create("codeCoverageReportRtx") {
+        description = "Code Coverage rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:jacocoTestReport"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/rtxframework/build/jacoco/jacocoHtml/index.html"
+            }
+        }
+    }
+
+    tasks.create("codeQualityRtxWrapperApp") {
+        description = "Code Quality rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:ktlint"
+        dependsOn ":app:detekt"
+    }
+    tasks.create("unitTestRtxWrapperApp") {
+        description = "Unit Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:testDebugUnitTest"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/app/build/reports/tests/testDebugUnitTest/index.html"
+            }
+        }
+    }
+    tasks.create("codeCoverageReportRtxWrapperApp") {
+        description = "Code Coverage Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:jacocoTestReport"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/app/build/jacoco/jacocoHtml/index.html"
+            }
+        }
+    }
+}
