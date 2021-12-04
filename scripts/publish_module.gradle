@@ -94,6 +94,18 @@ afterEvaluate {
         group = "Publish rtx-framework"
         dependsOn ":rtxframework:testDebugUnitTest"
     }
+
+    tasks.create("checkCodeQualityRtxWrapperApp") {
+        description = "Check Quality rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:ktlint"
+        dependsOn ":app:detekt"
+    }
+    tasks.create("checkUnitTestRtxWrapperApp") {
+        description = "Check Unit Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:testDebugUnitTest"
+    }
 }
 
 signing {
