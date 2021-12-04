@@ -33,7 +33,7 @@ allprojects {
         maven { url 'https://jitpack.io' }
         mavenCentral()
     }
-    apply from: "$rootDir//scripts/detekt.gradle"
+    apply from: "$rootDir/scripts/detekt.gradle"
 }
 
 ext {

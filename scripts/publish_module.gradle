@@ -89,6 +89,11 @@ afterEvaluate {
         dependsOn ":rtxframework:ktlint"
         dependsOn ":rtxframework:detekt"
     }
+    tasks.create("checkUnitTestRtx") {
+        description = "Check Unit Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:testDebugUnitTest"
+    }
 }
 
 signing {
