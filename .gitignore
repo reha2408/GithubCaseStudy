@@ -163,7 +163,7 @@ fabric.properties
 ### AndroidStudio Patch ###
 
 !/gradle/wrapper/gradle-wrapper.jar
-*.jacoco.exec
+*jacoco.exec
 
 
 # End of https://www.gitignore.io/api/android,androidstudio
