@@ -27,8 +27,8 @@ class GithubApiSearchObserver(private val viewModel: RepoListViewModel) : BaseDi
         viewModel.handleSearchListError(message)
     }
 
-    override val handleErrorInBase: Boolean = false
-    override val handleNetworkErrorInBase: Boolean = false
+    override var handleErrorInBase: Boolean = false
+    override var handleNetworkErrorInBase: Boolean = false
 
     private fun toViewEntity(list: List<Repo>?) = SearchResultViewEntity(list?: emptyList())
 }
