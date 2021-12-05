@@ -15,6 +15,6 @@ buildscript {
 > module-level gradle file.
 ```
 dependencies {
-    implementation "io.github.reha2408:rtx-framework:1.0.4"
+    implementation "io.github.reha2408:rtx-framework:1.0.6"
 }
 ```
