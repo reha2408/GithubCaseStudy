@@ -2,21 +2,23 @@ package com.rtx.framework.base
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
+import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.verify
+import com.rtx.framework.model.UiMessage
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
-import org.junit.Assert.*
+import org.junit.Assert.assertEquals
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import org.mockito.ArgumentMatchers.any
 import org.mockito.InjectMocks
 import org.mockito.Mock
-import org.mockito.Mockito
-import org.mockito.Mockito.*
+import org.mockito.Mockito.never
+import org.mockito.Mockito.`when`
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
-import com.nhaarman.mockitokotlin2.mock
-import com.rtx.framework.model.UiMessage
 
 @RunWith(MockitoJUnitRunner::class)
 class BaseDisposableObserverTest {
@@ -26,6 +28,9 @@ class BaseDisposableObserverTest {
 
     @Spy
     lateinit var vm: BaseViewModel
+
+    @Mock
+    lateinit var t: Throwable
 
     @Mock
     lateinit var response: DummyResponse
@@ -90,7 +95,6 @@ class BaseDisposableObserverTest {
 
         dummyDisposableObserver.networkErrorMessage = ResponseCode.NETWORK_FAIL.message
         val test = "test"
-        val t = mock(Throwable::class.java)
         `when`(t.message)
             .thenReturn(test)
         dummyDisposableObserver.onError(t)
@@ -107,7 +111,6 @@ class BaseDisposableObserverTest {
         dummyDisposableObserver.handleNetworkErrorInBase = false
         dummyDisposableObserver.networkErrorMessage = ResponseCode.NETWORK_FAIL.message
         val test = "test"
-        val t = mock(Throwable::class.java)
         `when`(t.message)
             .thenReturn(test)
         dummyDisposableObserver.onError(t)
@@ -118,7 +121,6 @@ class BaseDisposableObserverTest {
 
     @Test
     fun `verify network error response with null message`() {
-        val t = mock(Throwable::class.java)
         dummyDisposableObserver.onError(t)
 
         verify(dummyDisposableObserver).onNetworkError(ResponseCode.NETWORK_FAIL.message)
@@ -128,17 +130,14 @@ class BaseDisposableObserverTest {
     fun `verify network error response with default message`() {
         dummyDisposableObserver.networkErrorMessage = ResponseCode.NETWORK_FAIL.message
         dummyDisposableObserver.useDefaultNetworkErrorMessage = true
-        val t = mock(Throwable::class.java)
         dummyDisposableObserver.onError(t)
         verify(dummyDisposableObserver).onNetworkError(ResponseCode.NETWORK_FAIL.message)
     }
 
     companion object {
-        class DummyDisposableObserver(baseViewModel: BaseViewModel): BaseDisposableObserver<DummyResponse>(baseViewModel) {
-            override fun onResponseSuccess(response: DummyResponse?) {
-
-            }
+        class DummyDisposableObserver(baseViewModel: BaseViewModel) : BaseDisposableObserver<DummyResponse>(baseViewModel) {
+            override fun onResponseSuccess(response: DummyResponse?) = Unit
         }
-        class DummyResponse: BaseResponse()
+        class DummyResponse : BaseResponse()
     }
 }
