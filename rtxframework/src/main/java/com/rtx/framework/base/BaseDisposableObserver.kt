@@ -7,9 +7,9 @@ import java.net.HttpURLConnection
 
 abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : DisposableSingleObserver<Response<R>>() {
 
-    open val handleErrorInBase: Boolean = true
-    open val handleNetworkErrorInBase: Boolean = true
-    open val useDefaultNetworkErrorMessage: Boolean = false
+    open var handleErrorInBase: Boolean = true
+    open var handleNetworkErrorInBase: Boolean = true
+    open var useDefaultNetworkErrorMessage: Boolean = false
     open var networkErrorMessage: String = ResponseCode.NETWORK_FAIL.message
     open var apiErrorMessage: String = ResponseCode.API_ERROR.message
 

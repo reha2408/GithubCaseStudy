@@ -7,7 +7,7 @@ data class UiMessage(
     @StringRes val messageId: Int? = null
 ) {
 
-    fun type() = if (!messageText.isNullOrEmpty()) {
+    fun type() = if (messageText != null) {
         Type.TEXT
     } else if (messageId != null) {
         Type.ID
