@@ -1,5 +1,6 @@
 package com.rtx.framework.base
 
+import androidx.annotation.RestrictTo
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.rtx.framework.model.UiMessage
@@ -16,7 +17,8 @@ abstract class BaseViewModel : ViewModel() {
     private val uiMessage = MutableLiveData<UiMessage>()
     val uiMessageLiveData: MutableLiveData<UiMessage> get() = uiMessage
 
-    override fun onCleared() {
+    @RestrictTo(RestrictTo.Scope.TESTS)
+    public override fun onCleared() {
         super.onCleared()
         compositeDisposable.clear()
     }
