@@ -1,8 +1,8 @@
 package com.reha.casestudy
 
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.reha.casestudy.extension.launchFragmentInHiltContainer
 import com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment
+import com.reha.casestudy.util.launchFragmentInHiltContainer
 import org.junit.Test
 import org.junit.runner.RunWith
 

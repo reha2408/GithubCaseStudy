@@ -1,4 +1,4 @@
-package com.reha.casestudy.extension
+package com.reha.casestudy.util
 
 import android.content.ComponentName
 import android.content.Intent

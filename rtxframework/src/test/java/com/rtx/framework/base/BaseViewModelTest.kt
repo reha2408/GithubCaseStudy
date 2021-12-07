@@ -1,12 +1,10 @@
 package com.rtx.framework.base
 
 import androidx.arch.core.executor.testing.InstantTaskExecutorRule
-import androidx.lifecycle.Observer
-import com.nhaarman.mockitokotlin2.any
+import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
-import com.nhaarman.mockitokotlin2.verify
 import com.rtx.framework.R
-import com.rtx.framework.model.UiMessage
+import com.rtx.framework.util.getOrAwaitValue
 import io.reactivex.disposables.Disposable
 import org.junit.Assert.assertEquals
 import org.junit.Rule
@@ -35,24 +33,21 @@ class BaseViewModelTest {
     }
 
     @Test
-    fun `handle UiMessage string`() {
-        val observer = mock<Observer<UiMessage>>()
-        vm.uiMessageLiveData.observeForever(observer)
+    fun `handle UiMessage with resource Id`() {
+        val id = R.string.test_text
 
-        vm.handleUiMessage(R.string.test_text)
+        vm.handleUiMessage(id)
 
-        verify(observer).onChanged(any())
+        assertThat(vm.uiMessageLiveData.getOrAwaitValue().messageId).isEqualTo(id)
     }
 
     @Test
-    fun `handle UiMessage resource Id`() {
-        val observer = mock<Observer<UiMessage>>()
-        vm.uiMessageLiveData.observeForever(observer)
+    fun `handle UiMessage with string`() {
         val test = "test"
 
         vm.handleUiMessage(test)
 
-        verify(observer).onChanged(any())
+        assertThat(vm.uiMessageLiveData.getOrAwaitValue().messageText).isEqualTo(test)
     }
 
     @Test
