@@ -7,12 +7,12 @@ apply plugin: 'dagger.hilt.android.plugin'
 apply from: "${rootProject.projectDir}/scripts/jacoco_coverage.gradle"
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     defaultConfig {
         applicationId "com.reha.casestudy"
         minSdkVersion 24
-        targetSdkVersion 30
+        targetSdkVersion 31
         versionCode 1
         versionName "1.0"
 

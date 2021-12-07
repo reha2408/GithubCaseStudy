@@ -26,6 +26,16 @@ afterEvaluate {
             }
         }
     }
+    tasks.create("instrumentationTestRtx") {
+        description = "Instrumentation Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":rtxframework:connectedDebugAndroidTest"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/rtxframework/build/reports/androidTests/connected/index.html"
+            }
+        }
+    }
     tasks.create("codeCoverageReportRtx") {
         description = "Code Coverage rtx-framework"
         group = "Publish rtx-framework"
@@ -50,6 +60,16 @@ afterEvaluate {
         doLast {
             exec {
                 commandLine 'open', "$rootProject.projectDir/app/build/reports/tests/testDebugUnitTest/index.html"
+            }
+        }
+    }
+    tasks.create("instrumentationTestRtxWrapperApp") {
+        description = "Instrumentation Test rtx-framework"
+        group = "Publish rtx-framework"
+        dependsOn ":app:connectedDebugAndroidTest"
+        doLast {
+            exec {
+                commandLine 'open', "$rootProject.projectDir/app/build/reports/androidTests/connected/index.html"
             }
         }
     }
