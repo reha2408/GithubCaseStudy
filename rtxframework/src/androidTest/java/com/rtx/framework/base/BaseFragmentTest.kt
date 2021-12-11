@@ -1,8 +1,8 @@
-package com.rtx.framework
+package com.rtx.framework.base
 
 import androidx.fragment.app.testing.launchFragmentInContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
-import com.rtx.framework.base.BaseFragment
+import com.rtx.framework.dummy.DummyFragment
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -11,10 +11,7 @@ class BaseFragmentTest {
 
     @Test
     fun verify_onCleared() {
-        val scenario = launchFragmentInContainer<BaseFragment<*, *>>()
+        val scenario = launchFragmentInContainer<DummyFragment>()
     }
 
-    companion object {
-        // class DummyFragment: BaseFragment<BaseViewModel>
-    }
 }
