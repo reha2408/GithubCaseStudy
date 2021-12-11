@@ -15,16 +15,16 @@ import com.rtx.framework.extension.showError
 @Suppress("TooManyFunctions")
 abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment() {
 
-    protected lateinit var binding: T
+    lateinit var binding: T
 
-    protected lateinit var viewModel: V
+    lateinit var viewModel: V
 
     @LayoutRes
     abstract fun getLayoutId(): Int
 
     abstract fun getBRViewModelId(): Int
 
-    protected abstract fun getViewModelClass(): Class<V>
+    abstract fun getViewModelClass(): Class<V>
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -44,14 +44,13 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        observeBaseViewModel()
+    }
+
+    fun observeBaseViewModel() {
         viewModel.run {
             observeLiveData(progressLiveData) {
-                it?.let {
-                    when (it) {
-                        ResponseSubscriptionStatus.SUBSCRIBED -> lockScreen()
-                        ResponseSubscriptionStatus.FINISHED -> unlockScreen()
-                    }
-                }
+                showProgress(it)
             }
             observeLiveData(uiMessageLiveData) {
                 showError(it)
@@ -59,22 +58,18 @@ abstract class BaseFragment<V : BaseViewModel, T : ViewDataBinding> : Fragment()
         }
     }
 
-    protected fun lockScreen() = progressStatus(View.VISIBLE)
-
-    protected fun unlockScreen() = progressStatus(View.GONE)
-
-    private fun progressStatus(viewStatus: Int) {
-        with(activity) {
-            if (this is BaseActivity) {
-                when (viewStatus) {
-                    View.VISIBLE -> lockScreen()
-                    View.GONE -> unlockScreen()
-                }
-            }
+    fun showProgress(status: ResponseSubscriptionStatus) {
+        when (status) {
+            ResponseSubscriptionStatus.SUBSCRIBED -> lockScreen()
+            ResponseSubscriptionStatus.FINISHED -> unlockScreen()
         }
     }
 
-    protected fun onBackPressed() {
+    fun lockScreen() = (activity as? BaseActivity)?.lockScreen()
+
+    fun unlockScreen() = (activity as? BaseActivity)?.unlockScreen()
+
+    fun onBackPressed() {
         activity?.onBackPressed()
     }
 

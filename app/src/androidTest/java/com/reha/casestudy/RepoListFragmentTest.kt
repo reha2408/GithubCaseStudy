@@ -7,14 +7,11 @@ import org.junit.Test
 import org.junit.runner.RunWith
 
 @RunWith(AndroidJUnit4::class)
-class BaseFragmentTest {
+class RepoListFragmentTest {
 
     @Test
     fun verify_onCleared() {
         val scenario = launchFragmentInHiltContainer<RepoListFragment>()
     }
 
-    companion object {
-        // class DummyFragment: BaseFragment<BaseViewModel>
-    }
 }

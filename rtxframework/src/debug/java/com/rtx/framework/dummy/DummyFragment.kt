@@ -5,8 +5,7 @@ import com.rtx.framework.R
 import com.rtx.framework.base.BaseFragment
 import com.rtx.framework.databinding.DummyFragmentBinding
 
-class DummyFragment: BaseFragment<DummyViewModel, DummyFragmentBinding>() {
-
+class DummyFragment : BaseFragment<DummyViewModel, DummyFragmentBinding>() {
 
     override fun getLayoutId() = R.layout.dummy_fragment
 
