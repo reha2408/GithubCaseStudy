@@ -4,6 +4,8 @@ import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
+import com.rtx.framework.dummy.DummyDisposableObserver
+import com.rtx.framework.dummy.DummyResponse
 import com.rtx.framework.model.UiMessage
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
@@ -132,12 +134,5 @@ class BaseDisposableObserverTest {
         dummyDisposableObserver.useDefaultNetworkErrorMessage = true
         dummyDisposableObserver.onError(t)
         verify(dummyDisposableObserver).onNetworkError(ResponseCode.NETWORK_FAIL.message)
-    }
-
-    companion object {
-        class DummyDisposableObserver(baseViewModel: BaseViewModel) : BaseDisposableObserver<DummyResponse>(baseViewModel) {
-            override fun onResponseSuccess(response: DummyResponse?) = Unit
-        }
-        class DummyResponse : BaseResponse()
     }
 }

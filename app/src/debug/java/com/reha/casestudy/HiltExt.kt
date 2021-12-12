@@ -1,4 +1,4 @@
-package com.reha.casestudy.util
+package com.reha.casestudy
 
 import android.content.ComponentName
 import android.content.Intent
@@ -8,8 +8,6 @@ import androidx.core.util.Preconditions
 import androidx.fragment.app.Fragment
 import androidx.test.core.app.ActivityScenario
 import androidx.test.core.app.ApplicationProvider
-import com.reha.casestudy.HiltTestActivity
-import com.reha.casestudy.R
 
 /**
  * launchFragmentInContainer from the androidx.fragment:fragment-testing library

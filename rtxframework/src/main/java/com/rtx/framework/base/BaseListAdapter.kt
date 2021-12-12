@@ -12,7 +12,7 @@ import androidx.recyclerview.widget.RecyclerView
  */
 abstract class BaseListAdapter<T>(
     callback: DiffUtil.ItemCallback<T>,
-    private val clickListener: ((T) -> Unit)? = null
+    var clickListener: ((T) -> Unit)? = null
 ) : ListAdapter<T, BaseViewHolder<T>>(callback) {
 
     abstract fun createViewHolder(
@@ -28,15 +28,16 @@ abstract class BaseListAdapter<T>(
             viewType
         )
 
-    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) {
-        currentList.get(position)?.also { item ->
-            clickListener?.let {
-                holder.itemView.setOnClickListener { _ ->
-                    it.invoke(item)
-                }
+    override fun onBindViewHolder(holder: BaseViewHolder<T>, position: Int) =
+        bindItem(holder, currentList[position])
+
+    fun bindItem(holder: BaseViewHolder<T>, item: T) {
+        clickListener?.let {
+            holder.itemView.setOnClickListener { _ ->
+                it.invoke(item)
             }
-            holder.bind(item)
         }
+        holder.bind(item)
     }
 
     override fun getItemCount() = currentList.size
