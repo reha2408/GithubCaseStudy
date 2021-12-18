@@ -1,21 +1,22 @@
 package com.rtx.framework.base
 
-import com.nhaarman.mockitokotlin2.mock
+import com.nhaarman.mockitokotlin2.any
+import com.nhaarman.mockitokotlin2.spy
+import com.nhaarman.mockitokotlin2.verify
 import com.rtx.framework.dummy.DummyDisposableObserver
 import com.rtx.framework.dummy.DummyParams
-import com.rtx.framework.dummy.DummyResponse
+import com.rtx.framework.dummy.DummyRequestUseCase
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class RequestUseCaseTest {
+class RequestUseCaseTest : BaseUnitTest() {
 
     @Test
     fun verifyExecute() {
-        val dummyDisposableObserver = mock<DummyDisposableObserver>()
-        val requestUseCase =
-            mock<RequestUseCase<DummyResponse, DummyParams>>()
+        val baseViewModel = spy<BaseViewModel>()
+        val dummyDisposableObserver = spy(DummyDisposableObserver(baseViewModel))
+        val requestUseCase = spy(DummyRequestUseCase())
         requestUseCase.execute(dummyDisposableObserver, DummyParams())
+
+        verify(dummyDisposableObserver).onSuccess(any())
     }
 }

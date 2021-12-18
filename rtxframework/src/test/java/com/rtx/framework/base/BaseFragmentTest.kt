@@ -1,22 +1,14 @@
 package com.rtx.framework.base
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.databinding.ViewDataBinding
 import com.nhaarman.mockitokotlin2.never
 import com.nhaarman.mockitokotlin2.verify
-import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class BaseFragmentTest {
-
-    @get:Rule
-    val instantTaskExecutor = InstantTaskExecutorRule()
+class BaseFragmentTest : BaseUnitTest() {
 
     @Mock
     lateinit var activity: BaseActivity

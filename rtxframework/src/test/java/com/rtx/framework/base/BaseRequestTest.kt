@@ -2,12 +2,9 @@ package com.rtx.framework.base
 
 import org.junit.Assert
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class BaseRequestTest {
+class BaseRequestTest : BaseUnitTest() {
 
     @Spy
     lateinit var request: BaseRequest

@@ -1,15 +1,13 @@
 package com.rtx.framework.model
 
 import com.rtx.framework.R
+import com.rtx.framework.base.BaseUnitTest
 import org.junit.Assert.assertEquals
 import org.junit.Assert.assertNotNull
 import org.junit.Assert.assertNull
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class UiMessageTest {
+class UiMessageTest : BaseUnitTest() {
 
     @Test
     fun `get type 'Text' when messageText is set`() {

@@ -1,23 +1,15 @@
 package com.rtx.framework.base
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import com.google.common.truth.Truth.assertThat
 import com.nhaarman.mockitokotlin2.mock
 import com.rtx.framework.R
 import com.rtx.framework.util.getOrAwaitValue
 import io.reactivex.disposables.Disposable
 import org.junit.Assert.assertEquals
-import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class BaseViewModelTest {
-
-    @get:Rule
-    val instantTaskExecutor = InstantTaskExecutorRule()
+class BaseViewModelTest : BaseUnitTest() {
 
     @Spy
     lateinit var vm: BaseViewModel

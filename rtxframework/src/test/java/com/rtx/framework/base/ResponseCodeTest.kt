@@ -2,11 +2,8 @@ package com.rtx.framework.base
 
 import org.junit.Assert.assertEquals
 import org.junit.Test
-import org.junit.runner.RunWith
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class ResponseCodeTest {
+class ResponseCodeTest : BaseUnitTest() {
 
     @Test
     fun `check 'message' when type is set to 'Success'`() {

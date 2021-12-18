@@ -4,12 +4,9 @@ import com.nhaarman.mockitokotlin2.mock
 import io.reactivex.disposables.Disposable
 import org.junit.Assert.assertNotNull
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 
-@RunWith(MockitoJUnitRunner::class)
-class BaseUseCaseTest {
+class BaseUseCaseTest : BaseUnitTest() {
 
     @Spy
     lateinit var useCase: BaseUseCase

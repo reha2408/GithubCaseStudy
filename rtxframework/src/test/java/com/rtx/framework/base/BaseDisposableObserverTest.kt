@@ -1,6 +1,5 @@
 package com.rtx.framework.base
 
-import androidx.arch.core.executor.testing.InstantTaskExecutorRule
 import androidx.lifecycle.Observer
 import com.nhaarman.mockitokotlin2.mock
 import com.nhaarman.mockitokotlin2.verify
@@ -10,23 +9,16 @@ import com.rtx.framework.model.UiMessage
 import okhttp3.MediaType.Companion.toMediaTypeOrNull
 import okhttp3.ResponseBody.Companion.toResponseBody
 import org.junit.Assert.assertEquals
-import org.junit.Rule
 import org.junit.Test
-import org.junit.runner.RunWith
 import org.mockito.ArgumentMatchers.any
 import org.mockito.InjectMocks
 import org.mockito.Mock
 import org.mockito.Mockito.never
 import org.mockito.Mockito.`when`
 import org.mockito.Spy
-import org.mockito.junit.MockitoJUnitRunner
 import retrofit2.Response
 
-@RunWith(MockitoJUnitRunner::class)
-class BaseDisposableObserverTest {
-
-    @get:Rule
-    val instantTaskExecutor = InstantTaskExecutorRule()
+class BaseDisposableObserverTest : BaseUnitTest() {
 
     @Spy
     lateinit var vm: BaseViewModel
