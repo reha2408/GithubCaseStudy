@@ -110,6 +110,9 @@ android {
         // Data-binding for tests.
         kaptTest "androidx.databinding:databinding-compiler:7.0.3"
         kaptAndroidTest "androidx.databinding:databinding-compiler:7.0.3"
+
+        testImplementation "io.mockk:mockk:1.12.1"
+        testImplementation "io.mockk:mockk-agent-jvm:1.12.1"
     }
     android {
         sourceSets {
