@@ -11,3 +11,10 @@ class DummyRequestUseCase : RequestUseCase<DummyResponse, DummyParams>() {
         return Single.just(response)
     }
 }
+
+class DummyFailingRequestUseCase : RequestUseCase<DummyResponse, DummyParams>() {
+
+    override fun buildUseCaseObservable(params: DummyParams): Single<Response<DummyResponse>> {
+        return Single.never()
+    }
+}
