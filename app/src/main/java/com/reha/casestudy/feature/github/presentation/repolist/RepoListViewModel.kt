@@ -17,8 +17,8 @@ class RepoListViewModel @Inject constructor(
     private val pref: SharedPreferences
 ) : BaseViewModel() {
 
-    var isNoData = ObservableField<Boolean>(false)
-    var noDataText = ObservableField("")
+    val isNoData = ObservableField<Boolean>(false)
+    val noDataText = ObservableField("")
 
     private val repoList = MutableLiveData<List<Repo>>()
     val repoListLiveData : LiveData<List<Repo>> get() = repoList
