@@ -5,8 +5,8 @@ import com.reha.casestudy.feature.github.data.request.SearchRequest
 import com.reha.casestudy.feature.github.domain.GitHubRepository
 import com.rtx.framework.base.RequestUseCase
 import io.reactivex.Single
-import javax.inject.Inject
 import retrofit2.Response
+import javax.inject.Inject
 
 class GithubApiSearch @Inject constructor(private val repository: GitHubRepository) :
     RequestUseCase<List<Repo>, GithubApiSearch.Params>() {
