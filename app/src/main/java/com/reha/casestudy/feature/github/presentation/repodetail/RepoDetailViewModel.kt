@@ -10,7 +10,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RepoDetailViewModel @Inject constructor(val pref: SharedPreferences) : BaseViewModel() {
 
-    var repoDetail = ObservableField<Repo>()
+    val repoDetail = ObservableField<Repo>()
 
     fun setRepoDetail(repo: Repo) = repoDetail.set(repo)
 
