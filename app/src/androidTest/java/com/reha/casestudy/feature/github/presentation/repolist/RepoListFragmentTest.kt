@@ -1,7 +1,7 @@
 package com.reha.casestudy.feature.github.presentation.repolist
 
-import com.reha.casestudy.launchFragmentInHiltContainer
 import androidx.test.ext.junit.runners.AndroidJUnit4
+import com.reha.casestudy.launchFragmentInHiltContainer
 import org.junit.Test
 import org.junit.runner.RunWith
 
@@ -9,7 +9,7 @@ import org.junit.runner.RunWith
 class RepoListFragmentTest {
 
     @Test
-    fun verify_onCleared() {
+    fun fragmentStartWithoutCrash() {
         val scenario = launchFragmentInHiltContainer<RepoListFragment>()
     }
 
