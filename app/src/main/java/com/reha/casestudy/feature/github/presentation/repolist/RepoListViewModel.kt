@@ -4,10 +4,10 @@ import android.content.SharedPreferences
 import androidx.databinding.ObservableField
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import com.rtx.framework.base.BaseViewModel
 import com.reha.casestudy.feature.github.domain.interactor.GithubApiSearch
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
+import com.rtx.framework.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
@@ -21,7 +21,7 @@ class RepoListViewModel @Inject constructor(
     val noDataText = ObservableField("")
 
     private val repoList = MutableLiveData<List<Repo>>()
-    val repoListLiveData : LiveData<List<Repo>> get() = repoList
+    val repoListLiveData: LiveData<List<Repo>> get() = repoList
 
     fun searchList(searchText: String) {
         githubApiSearch.execute(GithubApiSearchObserver(this), GithubApiSearch.Params(searchText))

@@ -10,7 +10,7 @@ import com.reha.casestudy.databinding.RepoDetailFragmentBinding
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBinding>() {
+class RepoDetailFragment : BaseFragment<RepoDetailViewModel, RepoDetailFragmentBinding>() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -20,7 +20,6 @@ class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBi
     }
 
     private fun observeViewModel() = viewModel.run {
-
     }
 
     private fun initUi(repo: Repo) {

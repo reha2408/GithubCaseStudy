@@ -9,5 +9,4 @@ class GitHubDataRepository @Inject constructor(
     private val remoteDataSource: GithubRemoteDataSource
 ) : GitHubRepository {
     override fun search(request: SearchRequest) = remoteDataSource.search(request)
-
 }

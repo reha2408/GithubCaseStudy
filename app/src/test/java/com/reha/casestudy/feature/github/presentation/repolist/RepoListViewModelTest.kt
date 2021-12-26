@@ -54,13 +54,13 @@ class RepoListViewModelTest : BaseUnitTest() {
     @Test
     fun `verify handle non-empty list`() {
         // given
-        val list = listOf(Repo(),Repo())
+        val list = listOf(Repo(), Repo())
 
         // when
         vm.handleSearchList(SearchResultViewEntity(list))
 
         // then
-        assertEquals(vm.repoListLiveData.getOrAwaitValue(),list)
+        assertEquals(vm.repoListLiveData.getOrAwaitValue(), list)
         assertEquals(vm.isNoData.get(), false)
     }
 
@@ -74,8 +74,8 @@ class RepoListViewModelTest : BaseUnitTest() {
         vm.handleSearchList(entity)
 
         // then
-        assertEquals(vm.repoListLiveData.getOrAwaitValue(),list)
-        assertEquals(vm.noDataText.get(),"User has no repository on Github.")
+        assertEquals(vm.repoListLiveData.getOrAwaitValue(), list)
+        assertEquals(vm.noDataText.get(), "User has no repository on Github.")
         assertEquals(vm.isNoData.get(), true)
     }
 }

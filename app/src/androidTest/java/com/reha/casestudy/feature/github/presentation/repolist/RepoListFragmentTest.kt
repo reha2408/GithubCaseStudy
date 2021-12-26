@@ -12,5 +12,4 @@ class RepoListFragmentTest {
     fun fragmentStartWithoutCrash() {
         val scenario = launchFragmentInHiltContainer<RepoListFragment>()
     }
-
 }

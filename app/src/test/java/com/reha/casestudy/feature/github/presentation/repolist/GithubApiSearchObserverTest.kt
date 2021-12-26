@@ -11,7 +11,7 @@ import org.mockito.Mock
 import org.mockito.Spy
 import java.net.HttpURLConnection
 
-class GithubApiSearchObserverTest: BaseUnitTest() {
+class GithubApiSearchObserverTest : BaseUnitTest() {
 
     private val test = "test"
     private val repo = Repo(1, test, test, test, 1, Owner(1, test), true)

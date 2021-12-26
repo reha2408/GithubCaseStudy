@@ -14,7 +14,6 @@ import org.mockito.Mock
 import org.mockito.Mockito.`when`
 import org.mockito.Spy
 
-
 class RepoDetailViewModelTest : BaseUnitTest() {
 
     private val test = "test"
@@ -39,12 +38,12 @@ class RepoDetailViewModelTest : BaseUnitTest() {
         vm.setRepoDetail(repo)
 
         // then
-        assertEquals(vm.repoDetail.get(), repo )
+        assertEquals(vm.repoDetail.get(), repo)
     }
 
     @Test
     fun `verify repo detail not set`() {
-        //then
+        // then
         assertEquals(vm.repoDetail.get(), null)
     }
 

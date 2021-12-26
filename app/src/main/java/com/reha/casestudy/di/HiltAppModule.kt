@@ -54,10 +54,7 @@ object ApiModule {
 
     @Provides
     @Singleton
-    fun provideRetrofit(
-        baseUrl: HttpUrl?, client: OkHttpClient?,
-        gson: Gson?
-    ): Retrofit {
+    fun provideRetrofit(baseUrl: HttpUrl?, client: OkHttpClient?, gson: Gson?): Retrofit {
         return Retrofit.Builder()
             .client(client)
             .baseUrl(baseUrl)
@@ -78,9 +75,9 @@ object ApiModule {
 @InstallIn(SingletonComponent::class)
 object DataModule {
 
-    val dateFormat = "yyyy.MM.dd hh:mm:ss";
+    val dateFormat = "yyyy.MM.dd hh:mm:ss"
 
-    fun createOkHttpClient() : OkHttpClient.Builder {
+    fun createOkHttpClient(): OkHttpClient.Builder {
         return OkHttpClient.Builder()
     }
 

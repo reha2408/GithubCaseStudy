@@ -1,14 +1,17 @@
 package com.reha.casestudy.feature.github.presentation.repolist
 
-import com.rtx.framework.base.BaseDisposableObserver
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
+import com.rtx.framework.base.BaseDisposableObserver
 
-class GithubApiSearchObserver(private val viewModel: RepoListViewModel) : BaseDisposableObserver<List<Repo>>(viewModel) {
+class GithubApiSearchObserver(
+    private val viewModel: RepoListViewModel
+) : BaseDisposableObserver<List<Repo>>(viewModel) {
 
-    companion object {
-        private const val USER_NOT_FOUND_ERROR = "User not found."
-    }
+    override var handleErrorInBase: Boolean = false
+    override var handleNetworkErrorInBase: Boolean = false
+
+    private val userNotFoundMessage = "User not found."
 
     override fun onResponseSuccess(response: List<Repo>?) {
         viewModel.handleSearchList(toViewEntity(response))
@@ -17,7 +20,7 @@ class GithubApiSearchObserver(private val viewModel: RepoListViewModel) : BaseDi
     override fun onResponseError(response: List<Repo>?, code: Int) {
         super.onResponseError(response, code)
         if (code == 404) {
-            apiErrorMessage = USER_NOT_FOUND_ERROR
+            apiErrorMessage = userNotFoundMessage
         }
         viewModel.handleSearchListError(apiErrorMessage)
     }
@@ -27,8 +30,5 @@ class GithubApiSearchObserver(private val viewModel: RepoListViewModel) : BaseDi
         viewModel.handleSearchListError(message)
     }
 
-    override var handleErrorInBase: Boolean = false
-    override var handleNetworkErrorInBase: Boolean = false
-
-    private fun toViewEntity(list: List<Repo>?) = SearchResultViewEntity(list?: emptyList())
+    private fun toViewEntity(list: List<Repo>?) = SearchResultViewEntity(list ?: emptyList())
 }

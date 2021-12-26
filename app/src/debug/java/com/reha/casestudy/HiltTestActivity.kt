@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.reha.casestudy;
+package com.reha.casestudy
 
 import androidx.appcompat.app.AppCompatActivity
 import dagger.hilt.android.AndroidEntryPoint

@@ -15,9 +15,9 @@ import com.rtx.framework.extension.showSoftKeyboard
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class RepoListFragment: BaseFragment<RepoListViewModel, RepoListFragmentBinding>() {
+class RepoListFragment : BaseFragment<RepoListViewModel, RepoListFragmentBinding>() {
 
-    private val repoAdapter =  RepoAdapter(::onRepoSelected)
+    private val repoAdapter = RepoAdapter(::onRepoSelected)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
