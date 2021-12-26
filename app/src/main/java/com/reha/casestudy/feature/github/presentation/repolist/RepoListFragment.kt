@@ -17,10 +17,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RepoListFragment: BaseFragment<RepoListViewModel, RepoListFragmentBinding>() {
 
-    companion object {
-        fun newInstance() = RepoListFragment()
-    }
-
     private val repoAdapter =  RepoAdapter(::onRepoSelected)
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {

@@ -12,14 +12,6 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class RepoDetailFragment: BaseFragment<RepoDetailViewModel, RepoDetailFragmentBinding>() {
 
-    companion object {
-        fun newInstance(repo: Repo) = RepoDetailFragment().apply {
-            arguments = Bundle().apply {
-                putParcelable("repo", repo)
-            }
-        }
-    }
-
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val repo = arguments?.get("repo") as Repo

@@ -33,11 +33,13 @@ object HiltAppModule {
 
     @Provides
     @Singleton
-    fun provideGithubRepository(remoteDataSource: GithubRemoteDataSource): GitHubRepository = GitHubDataRepository(remoteDataSource)
+    fun provideGithubRepository(remoteDataSource: GithubRemoteDataSource): GitHubRepository =
+        GitHubDataRepository(remoteDataSource)
 
     @Provides
     @Singleton
-    fun provideGithubRemoteDataSource(service: GitHubApiService): GithubRemoteDataSource = GithubRemoteDataSource(service)
+    fun provideGithubRemoteDataSource(service: GitHubApiService): GithubRemoteDataSource =
+        GithubRemoteDataSource(service)
 }
 
 @Module

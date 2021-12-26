@@ -7,6 +7,7 @@ import android.widget.FrameLayout
 import com.rtx.framework.base.BaseActivity
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.rtx.framework.extension.TAG
+import com.rtx.framework.extension.newInstance
 import com.reha.casestudy.feature.github.presentation.repodetail.RepoDetailFragment
 import com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment
 import dagger.hilt.android.AndroidEntryPoint
@@ -21,15 +22,16 @@ class MainActivity : BaseActivity() {
         setContentView(R.layout.main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                    .replace(R.id.container, RepoListFragment.newInstance())
+                    .replace(R.id.container, newInstance<RepoListFragment>())
                     .commitAllowingStateLoss()
         }
     }
 
     fun showRepoDetailPage(repo: Repo) {
+        val fragment = newInstance<RepoDetailFragment>("repo" to repo)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, RepoDetailFragment.newInstance(repo) , RepoDetailFragment.TAG)
-            .addToBackStack(RepoDetailFragment.TAG)
+            .replace(R.id.container, fragment , fragment.TAG)
+            .addToBackStack(fragment.TAG)
             .commitAllowingStateLoss()
     }
 
