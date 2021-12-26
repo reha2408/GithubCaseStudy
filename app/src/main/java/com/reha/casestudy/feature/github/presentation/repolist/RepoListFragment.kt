@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reha.casestudy.BR
 import com.reha.casestudy.MainActivity
 import com.reha.casestudy.R
-import com.rtx.framework.base.BaseFragment
-import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoListFragmentBinding
+import com.reha.casestudy.feature.github.data.model.Repo
+import com.rtx.framework.base.BaseFragment
 import com.rtx.framework.extension.hideSoftKeyboard
 import com.rtx.framework.extension.observeLiveData
 import com.rtx.framework.extension.showSoftKeyboard

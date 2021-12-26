@@ -10,7 +10,6 @@ import com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment
 import com.rtx.framework.base.BaseActivity
 import com.rtx.framework.extension.TAG
 import com.rtx.framework.extension.newInstance
-
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint

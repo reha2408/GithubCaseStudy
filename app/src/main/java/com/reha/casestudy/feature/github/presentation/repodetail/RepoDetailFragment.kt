@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.view.View
 import com.reha.casestudy.BR
 import com.reha.casestudy.R
-import com.rtx.framework.base.BaseFragment
-import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.databinding.RepoDetailFragmentBinding
+import com.reha.casestudy.feature.github.data.model.Repo
+import com.rtx.framework.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
