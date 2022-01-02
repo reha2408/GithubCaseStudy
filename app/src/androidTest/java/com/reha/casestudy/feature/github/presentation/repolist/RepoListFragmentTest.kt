@@ -13,6 +13,7 @@ import androidx.test.espresso.matcher.ViewMatchers.isDisplayed
 import androidx.test.espresso.matcher.ViewMatchers.withId
 import androidx.test.espresso.matcher.ViewMatchers.withText
 import androidx.test.filters.MediumTest
+import com.google.gson.Gson
 import com.reha.casestudy.BaseUiTest
 import com.reha.casestudy.R
 import com.reha.casestudy.feature.github.data.model.Repo
@@ -21,10 +22,14 @@ import com.reha.casestudy.launchFragmentInHiltContainer
 import com.reha.casestudy.withListSize
 import dagger.hilt.android.testing.HiltAndroidTest
 import org.junit.Test
+import javax.inject.Inject
 
 @MediumTest
 @HiltAndroidTest
 class RepoListFragmentTest : BaseUiTest() {
+
+    @Inject
+    lateinit var gson: Gson
 
     @Test
     fun fragmentStartWithoutCrash() {
@@ -35,7 +40,7 @@ class RepoListFragmentTest : BaseUiTest() {
     fun onSearchResultedWithTwoItemsInList() {
         launchFragmentInHiltContainer<RepoListFragment> {
             getRepository(this).run {
-                list = listOf(Repo(name = "x1"), Repo(name = "x2"))
+                list = gson.fromJson(twoItemList, Array<Repo>::class.java).toMutableList()
             }
         }
 
@@ -51,7 +56,11 @@ class RepoListFragmentTest : BaseUiTest() {
 
     @Test
     fun onSearchResultedWithEmptyList() {
-        launchFragmentInHiltContainer<RepoListFragment>()
+        launchFragmentInHiltContainer<RepoListFragment> {
+            getRepository(this).run {
+                list = gson.fromJson(emptyList, Array<Repo>::class.java).toMutableList()
+            }
+        }
 
         onView(withId(R.id.submitBtn)).check(matches(isDisplayed()))
 
@@ -74,6 +83,36 @@ class RepoListFragmentTest : BaseUiTest() {
                 )
             )
     }
+
+    private val twoItemList = """[
+    {
+        "id": 339011582,
+        "name": "android-dev-challenge-compose",
+        "description": "Repo hosting default community health files.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 459,
+        "open_issues": 4
+    },
+    {
+        "id": 112380358,
+        "name": "android-ktx",
+        "description": "A set of Kotlin extensions for Android app development.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 7549,
+        "open_issues": 88
+    }
+    ] 
+    """.trimIndent()
+
+    private val emptyList = """[
+        ]
+    """.trimIndent()
 
     private fun getRepository(repoListFragment: RepoListFragment) =
         (repoListFragment.viewModel.githubApiSearch.repository) as FakeGithubRepository

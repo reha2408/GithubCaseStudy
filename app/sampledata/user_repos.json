@@ -1,0 +1,57 @@
+[
+    {
+        "id": 339011582,
+        "name": "android-dev-challenge-compose",
+        "description": "Repo hosting default community health files.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 459,
+        "open_issues": 4
+    },
+    {
+        "id": 112380358,
+        "name": "android-ktx",
+        "description": "A set of Kotlin extensions for Android app development.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 7549,
+        "open_issues": 88
+    },
+    {
+        "id": 41148494,
+        "name": "android-test",
+        "description": "An extensive framework for testing Android apps.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 959,
+        "open_issues": 235
+    },
+    {
+        "id": 201179882,
+        "name": "animation-samples",
+        "description": "Multiple samples showing the best practices in animation on Android.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 1851,
+        "open_issues": 29
+    },
+    {
+        "id": 90792131,
+        "name": "architecture-components-samples",
+        "description": "Samples for Android Architecture Components.",
+        "owner": {
+            "id": 32689599,
+            "avatar_url": "https://avatars.githubusercontent.com/u/32689599?v=4"
+        },
+        "stargazers_count": 21328,
+        "open_issues": 168
+    }
+]
