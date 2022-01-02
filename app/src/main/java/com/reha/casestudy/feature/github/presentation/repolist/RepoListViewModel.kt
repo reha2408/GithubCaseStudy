@@ -13,7 +13,7 @@ import javax.inject.Inject
 
 @HiltViewModel
 class RepoListViewModel @Inject constructor(
-    private val githubApiSearch: GithubApiSearch,
+    val githubApiSearch: GithubApiSearch,
     private val pref: SharedPreferences
 ) : BaseViewModel() {
 

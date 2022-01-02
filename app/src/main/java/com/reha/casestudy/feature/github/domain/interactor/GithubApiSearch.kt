@@ -8,8 +8,9 @@ import io.reactivex.Single
 import retrofit2.Response
 import javax.inject.Inject
 
-class GithubApiSearch @Inject constructor(private val repository: GitHubRepository) :
-    RequestUseCase<List<Repo>, GithubApiSearch.Params>() {
+class GithubApiSearch @Inject constructor(
+    val repository: GitHubRepository
+) : RequestUseCase<List<Repo>, GithubApiSearch.Params>() {
 
     override fun buildUseCaseObservable(params: Params): Single<Response<List<Repo>>> {
         val request = SearchRequest().apply {

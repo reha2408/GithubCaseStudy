@@ -21,7 +21,7 @@ import androidx.test.core.app.ApplicationProvider
 inline fun <reified T : Fragment> launchFragmentInHiltContainer(
     fragmentArgs: Bundle? = null,
     @StyleRes themeResId: Int = R.style.FragmentScenarioEmptyFragmentActivityTheme,
-    crossinline action: Fragment.() -> Unit = {}
+    crossinline action: T.() -> Unit = {}
 ) {
     val startActivityIntent = Intent.makeMainActivity(
         ComponentName(
@@ -44,6 +44,6 @@ inline fun <reified T : Fragment> launchFragmentInHiltContainer(
             .add(android.R.id.content, fragment, "")
             .commitNow()
 
-        fragment.action()
+        (fragment as T).action()
     }
 }
