@@ -76,7 +76,7 @@ import kotlinx.coroutines.channels.Channel
 
 fun main() {
     ex13()
-    // ex14()
+    ex14()
 }
 
 /**
@@ -109,6 +109,12 @@ fun log(message: Any?) {
     println("[${Thread.currentThread().name}] $message")
 }
 
+/*
+[Ahmet, Ali, Mehmet]
+[Reha, Ahmet, Ali]
+[Reha]
+Done.
+ */
 fun ex14() = runBlocking {
     launch(Dispatchers.Default) {
         loadContributorsChannels { users, completed ->
@@ -146,7 +152,8 @@ suspend fun getRepoIds() = coroutineScope {
 
 suspend fun getContributors(repoId: Int) = coroutineScope {
     val d = async {
-        delay(1000L)
+        val delayTime = (Math.random() * 10000).toLong()
+        delay(delayTime)
         when (repoId) {
             1 -> listOf("Reha")
             2 -> listOf("Reha", "Ahmet", "Ali")
