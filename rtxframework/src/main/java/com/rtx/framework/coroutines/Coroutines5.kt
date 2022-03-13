@@ -4,6 +4,14 @@ import kotlinx.coroutines.*
 
 /**
  * All the suspending functions in kotlinx.coroutines are cancellable.
+ *
+ * Run non-cancellable block;
+ * Any attempt to use a suspending function in the finally block of the previous example causes CancellationException,
+ * because the coroutine running this code is cancelled.
+ *
+ * Usually we have closing operations like closing file,cancelling a job, closing any kind of comm. channel
+ * which are usually non-blocking and do not involve any suspend functions.
+ * in rare case use withContext(NonCancellable) { } block in finally.
  */
 
 fun main() {
@@ -11,6 +19,7 @@ fun main() {
     ex16()
     ex17()
     ex18()
+    ex19()
 }
 
 /*
@@ -114,6 +123,30 @@ fun ex18() = runBlocking {
             }
         } finally {
             println("job: I'm running finally")
+        }
+    }
+    delay(1300L) // delay a bit
+    println("main: I'm tired of waiting!")
+    job.cancelAndJoin() // cancels the job and waits for its completion
+    println("main: Now I can quit.")
+}
+
+/**
+ * Closing resources with finally and NonCancellable.
+ */
+fun ex19() = runBlocking {
+    val job = launch {
+        try {
+            repeat(1000) { i ->
+                println("job: I'm sleeping $i ...")
+                delay(500L)
+            }
+        } finally {
+            withContext(NonCancellable) {
+                println("job: I'm running finally")
+                delay(1000L)
+                println("job: And I've just delayed for 1 sec because I'm non-cancellable")
+            }
         }
     }
     delay(1300L) // delay a bit
