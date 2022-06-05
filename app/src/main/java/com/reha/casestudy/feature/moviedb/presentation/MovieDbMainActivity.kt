@@ -1,34 +1,35 @@
-package com.reha.casestudy
+package com.reha.casestudy.feature.moviedb.presentation
 
 import android.os.Bundle
 import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
+import com.reha.casestudy.R
 import com.reha.casestudy.feature.github.data.model.Repo
-import com.reha.casestudy.feature.github.presentation.repodetail.RepoDetailFragment
-import com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment
+import com.reha.casestudy.feature.moviedb.presentation.moviedetail.MovieDetailFragment
+import com.reha.casestudy.feature.moviedb.presentation.movielist.MovieHomeFragment
 import com.rtx.framework.base.BaseActivity
 import com.rtx.framework.extension.TAG
 import com.rtx.framework.extension.newInstance
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
-class MainActivity : BaseActivity() {
+class MovieDbMainActivity : BaseActivity() {
 
     private val progressFl by lazy { findViewById<FrameLayout>(R.id.progressbar_fl) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.main_activity)
+        setContentView(R.layout.github_main_activity)
         if (savedInstanceState == null) {
             supportFragmentManager.beginTransaction()
-                .replace(R.id.container, newInstance<RepoListFragment>())
+                .replace(R.id.container, newInstance<MovieHomeFragment>())
                 .commitAllowingStateLoss()
         }
     }
 
     fun showRepoDetailPage(repo: Repo) {
-        val fragment = newInstance<RepoDetailFragment>("repo" to repo)
+        val fragment = newInstance<MovieDetailFragment>("repo" to repo)
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment, fragment.TAG)
             .addToBackStack(fragment.TAG)

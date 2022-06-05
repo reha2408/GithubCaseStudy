@@ -4,7 +4,7 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reha.casestudy.BR
-import com.reha.casestudy.MainActivity
+import com.reha.casestudy.feature.github.presentation.GithubMainActivity
 import com.reha.casestudy.R
 import com.reha.casestudy.databinding.RepoListFragmentBinding
 import com.reha.casestudy.feature.github.data.model.Repo
@@ -47,7 +47,7 @@ class RepoListFragment : BaseFragment<RepoListViewModel, RepoListFragmentBinding
     }
 
     private fun onRepoSelected(item: Repo) {
-        (activity as MainActivity).showRepoDetailPage(item)
+        (activity as GithubMainActivity).showRepoDetailPage(item)
     }
 
     override fun getLayoutId() = R.layout.repo_list_fragment

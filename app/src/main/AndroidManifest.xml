@@ -12,7 +12,11 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity"
+        <activity android:name=".feature.github.presentation.GithubMainActivity"
+            android:exported="true">
+        </activity>
+
+        <activity android:name=".feature.moviedb.presentation.MovieDbMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
