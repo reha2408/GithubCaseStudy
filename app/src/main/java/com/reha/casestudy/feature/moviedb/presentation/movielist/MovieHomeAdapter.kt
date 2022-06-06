@@ -10,7 +10,7 @@ import com.rtx.framework.base.BaseViewHolder
 import com.rtx.framework.extension.createDiffCallback
 
 class MovieHomeAdapter(itemClickListener: (MovieCategory) -> Unit) : BaseListAdapter<MovieCategory>(
-    createDiffCallback { oldItem, newItem -> oldItem.id == newItem.id },
+    createDiffCallback { oldItem, newItem -> oldItem.discoverType.id == newItem.discoverType.id },
     itemClickListener
 ) {
     private val viewPool = RecyclerView.RecycledViewPool()

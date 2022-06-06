@@ -1,14 +1,13 @@
 package com.reha.casestudy.feature.moviedb.data.model
 
 import android.os.Parcelable
-import com.google.gson.annotations.SerializedName
+import com.reha.casestudy.feature.moviedb.presentation.movielist.DiscoverType
 import kotlinx.parcelize.Parcelize
 
 
 @Parcelize
 data class MovieCategory(
-    val id: Long? = null,
-    val name: String? = null,
-    val movieList: List<Movie>? = null,
+    val discoverType: DiscoverType,
+    val movieList: MutableList<Movie> = mutableListOf(),
     val page: Int? = null
 ) : Parcelable

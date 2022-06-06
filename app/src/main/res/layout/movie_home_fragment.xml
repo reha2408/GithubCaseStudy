@@ -12,6 +12,7 @@
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:background="@color/black"
         tools:context="com.reha.casestudy.feature.github.presentation.repolist.RepoListFragment">
 
         <androidx.appcompat.widget.Toolbar
@@ -36,19 +37,6 @@
             tools:listitem="@layout/row_movie_category"
             android:visibility="@{!viewModel.isNoData}"
             tools:visibility="visible"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/noDataTv"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:textAlignment="center"
-            android:text="@{viewModel.noDataText}"
-            android:visibility="@{viewModel.isNoData}"
-            tools:visibility="gone"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

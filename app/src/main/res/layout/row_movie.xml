@@ -25,6 +25,7 @@
             <ImageView
                 android:id="@+id/avatar"
                 imageUrl="@{entity.fullPosterPath}"
+                android:background="@color/cardPlaceholder"
                 android:layout_width="0dp"
                 android:layout_height="128dp"
                 app:layout_constraintDimensionRatio="2:3"

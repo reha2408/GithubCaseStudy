@@ -25,25 +25,16 @@ class MovieHomeViewModel @Inject constructor(
     private val movieHomeList = MutableLiveData<List<MovieCategory>>()
     val movieHomeListLiveData: LiveData<List<MovieCategory>> get() = movieHomeList
 
+    val entity: MovieDiscoverViewEntity = MovieDiscoverViewEntity()
+
     fun initDiscoverMovies() {
-        // https://api.themoviedb.org/3/discover/movie?api_key=30b17f687f45dc52fc15a2dcf7f03695&language=en-US&sort_by=popularity.desc
-        movieDbDiscover.execute(MovieDiscoverObserver(this), MovieDbDiscover.Params(""))
+        movieDbDiscover.execute(MovieDiscoverObserver(this, DiscoverType.POPULAR), MovieDbDiscover.Params(DiscoverType.POPULAR))
+        movieDbDiscover.execute(MovieDiscoverObserver(this, DiscoverType.REVENUE), MovieDbDiscover.Params(DiscoverType.REVENUE))
+        movieDbDiscover.execute(MovieDiscoverObserver(this, DiscoverType.TOP_RATED), MovieDbDiscover.Params(DiscoverType.TOP_RATED))
     }
 
-    fun handleSearchListError(errorMessage: String) {
-        noDataText.set(errorMessage)
-        isNoData.set(true)
-    }
-
-    fun handleSearchList(entity: SearchResultViewEntity) {
-        entity.items.takeIf { it.isNotEmpty() }?.forEach {
-            it.isFavorite = pref.getBoolean(it.id.toString(), false)
-        } ?: noDataText.set("User has no repository on Github.")
-        // movieHomeList.value = entity.items
-        isNoData.set((entity.items.isEmpty()))
-    }
-
-    fun handlePopularMovies(entity: MovieDiscoverViewEntity) {
+    fun handleMovieCategory(movieCategory: MovieCategory) {
+        entity.movieCategories.find { it.discoverType.id == movieCategory.discoverType.id }?.movieList?.addAll(movieCategory.movieList)
         movieHomeList.value = entity.movieCategories
     }
 }
