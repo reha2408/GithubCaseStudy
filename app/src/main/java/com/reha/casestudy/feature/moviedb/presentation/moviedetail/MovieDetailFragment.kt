@@ -6,6 +6,7 @@ import com.reha.casestudy.BR
 import com.reha.casestudy.R
 import com.reha.casestudy.databinding.MovieDetailFragmentBinding
 import com.reha.casestudy.feature.github.data.model.Repo
+import com.reha.casestudy.feature.moviedb.data.model.Movie
 import com.rtx.framework.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
 
@@ -14,19 +15,19 @@ class MovieDetailFragment : BaseFragment<MovieDetailViewModel, MovieDetailFragme
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        val repo = arguments?.get("repo") as Repo
+        val movie = arguments?.get("movie") as Movie
         observeViewModel()
-        initUi(repo)
+        initUi(movie)
     }
 
     private fun observeViewModel() = viewModel.run {
     }
 
-    private fun initUi(repo: Repo) {
+    private fun initUi(movie: Movie) {
         binding.toolbar.setNavigationOnClickListener {
             onBackPressed()
         }
-        viewModel.setRepoDetail(repo)
+        viewModel.setMovieDetail(movie)
     }
 
     override fun getLayoutId() = R.layout.movie_detail_fragment

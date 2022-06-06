@@ -10,4 +10,6 @@
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="cardPlaceholder">@color/secondaryColor</color>
+    <color name="gradientEndColor">#80564d4d</color>
+    <color name="transparent">#00000000</color>
 </resources>

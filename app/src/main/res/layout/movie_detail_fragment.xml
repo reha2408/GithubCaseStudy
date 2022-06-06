@@ -5,14 +5,15 @@
     <data>
         <variable
             name="viewModel"
-            type="com.reha.casestudy.feature.github.presentation.repodetail.RepoDetailViewModel" />
+            type="com.reha.casestudy.feature.moviedb.presentation.moviedetail.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".feature.github.repolist.repo_list.RepoDetailFragment">
+        tools:context=".feature.github.repolist.repo_list.RepoDetailFragment"
+        android:background="@color/black">
 
         <androidx.appcompat.widget.Toolbar
             android:id="@+id/toolbar"
@@ -23,18 +24,29 @@
             app:navigationIcon="@drawable/ic_back_24px" />
 
         <ImageView
-            android:id="@+id/avatar"
-            imageUrl="@{viewModel.repoDetail.owner.avatarUrl}"
-            android:layout_width="160dp"
-            android:layout_height="120dp"
-            android:layout_marginStart="@dimen/padding_large"
+            android:id="@+id/image"
+            imageUrl="@{viewModel.movieDetail.fullBackdropPath}"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="384:216"
             android:scaleType="centerCrop"
             app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/toolbar"
-            android:layout_marginTop="@dimen/padding_large"
             tools:srcCompat="@drawable/ex_android"
             android:background="@drawable/round_outline"
-            android:elevation="14dp"
+            />
+
+        <ImageView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintDimensionRatio="384:216"
+            android:scaleType="centerCrop"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            tools:srcCompat="@drawable/bg_gradient"
+            android:background="@drawable/bg_gradient"
             />
 
         <com.google.android.material.textview.MaterialTextView
@@ -44,14 +56,13 @@
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_large"
             android:layout_marginStart="@dimen/padding_small"
-            android:layout_marginTop="@dimen/padding_standard"
-            android:text="@{viewModel.repoDetail.name}"
+            android:layout_marginBottom="@dimen/padding_standard"
+            android:text="@{viewModel.movieDetail.originalTitle}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/avatar"
-            app:layout_constraintVertical_chainStyle="packed"
-            tools:text="architecture-samples"
+            app:layout_constraintStart_toStartOf="@+id/image"
+            app:layout_constraintBottom_toBottomOf="@+id/image"
+            tools:text="Movie name"
             />
 
         <com.google.android.material.textview.MaterialTextView
@@ -60,63 +71,38 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_small"
+            android:layout_marginTop="@dimen/padding_standard"
             android:layout_marginStart="@dimen/padding_small"
-            android:text="@{viewModel.repoDetail.description}"
+            android:text="@{viewModel.movieDetail.overview}"
             android:textStyle="bold"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/name"
+            app:layout_constraintStart_toStartOf="@+id/image"
+            app:layout_constraintTop_toBottomOf="@+id/image"
             tools:text="A collection of samples to discuss and showcase different architectural tools and patterns for Android apps."
             app:layout_constraintVertical_chainStyle="packed"/>
 
         <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/favorite"
+            android:id="@+id/starIv"
             android:layout_width="36dp"
             android:layout_height="36dp"
-            android:layout_marginEnd="@dimen/padding_large"
             android:scaleType="centerCrop"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/toolbar"
+            app:layout_constraintTop_toBottomOf="@+id/toolbar"
+            app:layout_constraintEnd_toStartOf="@+id/ratingTv"
             android:layout_marginTop="@dimen/padding_large"
-            app:showStarIfFavorite="@{viewModel.repoDetail.favorite}"
-            android:onClick="@{() -> viewModel.onFavoriteClicked()}"
             tools:src="@drawable/ic_star_24"
             />
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/starCount"
+            android:id="@+id/ratingTv"
             style="@style/AppTheme.TextViewStyle.FilterRow"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_small"
-            android:layout_marginStart="@dimen/padding_standard"
-            android:text="@{`Stars: ` + viewModel.repoDetail.stargazersCount}"
+            android:text="@{viewModel.movieDetail.voteAverage.toString()}"
+            app:layout_constraintTop_toTopOf="@id/starIv"
+            app:layout_constraintBottom_toBottomOf="@id/starIv"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/favorite"
-            app:layout_constraintBottom_toTopOf="@+id/openIssueCount"
-            tools:text="Stars: 145"
-            android:textAlignment="viewEnd"
-            app:layout_constraintVertical_chainStyle="packed"
-            app:layout_constraintVertical_bias="0"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/openIssueCount"
-            style="@style/AppTheme.TextViewStyle.FilterRow"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="@dimen/padding_large"
-            android:layout_marginTop="@dimen/padding_small"
-            android:layout_marginStart="@dimen/padding_standard"
-            android:textAlignment="viewEnd"
-            android:text="@{`Open Issues: ` + viewModel.repoDetail.openIssues}"
-            app:layout_constraintBottom_toBottomOf="@+id/avatar"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/avatar"
-            app:layout_constraintTop_toBottomOf="@+id/starCount"
-            tools:text="Open Issues: 4" />
+            tools:text="7.8" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

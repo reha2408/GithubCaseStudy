@@ -6,6 +6,7 @@ import android.view.View.VISIBLE
 import android.widget.FrameLayout
 import com.reha.casestudy.R
 import com.reha.casestudy.feature.github.data.model.Repo
+import com.reha.casestudy.feature.moviedb.data.model.Movie
 import com.reha.casestudy.feature.moviedb.presentation.moviedetail.MovieDetailFragment
 import com.reha.casestudy.feature.moviedb.presentation.movielist.MovieHomeFragment
 import com.rtx.framework.base.BaseActivity
@@ -28,8 +29,8 @@ class MovieDbMainActivity : BaseActivity() {
         }
     }
 
-    fun showRepoDetailPage(repo: Repo) {
-        val fragment = newInstance<MovieDetailFragment>("repo" to repo)
+    fun showMovieDetailPage(movie: Movie) {
+        val fragment = newInstance<MovieDetailFragment>("movie" to movie)
         supportFragmentManager.beginTransaction()
             .replace(R.id.container, fragment, fragment.TAG)
             .addToBackStack(fragment.TAG)
