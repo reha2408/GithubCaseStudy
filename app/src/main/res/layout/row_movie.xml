@@ -16,26 +16,24 @@
         android:layout_height="wrap_content"
         android:background="@null"
         app:cardElevation="4dp"
-        android:padding="8dp">
+        >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="96dp"
-            android:layout_height="96dp"
-            android:padding="8dp">
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content">
 
             <ImageView
                 android:id="@+id/avatar"
                 imageUrl="@{entity.fullPosterPath}"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_width="0dp"
+                android:layout_height="128dp"
+                app:layout_constraintDimensionRatio="2:3"
                 android:scaleType="centerCrop"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:srcCompat="@drawable/django"
-                android:background="@drawable/round_outline"
-
                 />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
