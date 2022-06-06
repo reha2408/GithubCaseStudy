@@ -7,7 +7,8 @@ import kotlinx.parcelize.Parcelize
 
 @Parcelize
 data class MovieCategory(
-    @SerializedName("id") val id: Long? = null,
-    @SerializedName("name") val name: String? = null,
-    @SerializedName("movieList") val movieList: List<Movie>
+    val id: Long? = null,
+    val name: String? = null,
+    val movieList: List<Movie>? = null,
+    val page: Int? = null
 ) : Parcelable

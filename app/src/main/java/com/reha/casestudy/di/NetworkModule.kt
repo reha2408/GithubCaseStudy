@@ -24,7 +24,7 @@ class NetworkModule {
     @Provides
     @Singleton
     fun provideBaseUrl(): HttpUrl? {
-        return "https://api.github.com/".toHttpUrlOrNull()
+        return "https://api.themoviedb.org/3/".toHttpUrlOrNull()
     }
 
     @Provides

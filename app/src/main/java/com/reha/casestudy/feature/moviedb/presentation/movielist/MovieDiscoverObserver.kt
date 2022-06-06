@@ -1,23 +1,23 @@
 package com.reha.casestudy.feature.moviedb.presentation.movielist
 
-import com.reha.casestudy.feature.github.data.model.Repo
-import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
+import com.reha.casestudy.feature.moviedb.data.model.MovieCategory
+import com.reha.casestudy.feature.moviedb.data.response.MovieDiscoverResponse
 import com.rtx.framework.base.BaseDisposableObserver
 
 class MovieDiscoverObserver(
     private val viewModel: MovieHomeViewModel
-) : BaseDisposableObserver<List<Repo>>(viewModel) {
+) : BaseDisposableObserver<MovieDiscoverResponse>(viewModel) {
 
     override var handleErrorInBase: Boolean = false
     override var handleNetworkErrorInBase: Boolean = false
 
     private val userNotFoundMessage = "User not found."
 
-    override fun onResponseSuccess(response: List<Repo>?) {
-        viewModel.handleSearchList(toViewEntity(response))
+    override fun onResponseSuccess(response: MovieDiscoverResponse?) {
+        viewModel.handlePopularMovies(toViewEntity(response))
     }
 
-    override fun onResponseError(response: List<Repo>?, code: Int) {
+    override fun onResponseError(response: MovieDiscoverResponse?, code: Int) {
         super.onResponseError(response, code)
         if (code == 404) {
             apiErrorMessage = userNotFoundMessage
@@ -30,5 +30,7 @@ class MovieDiscoverObserver(
         viewModel.handleSearchListError(message)
     }
 
-    private fun toViewEntity(list: List<Repo>?) = SearchResultViewEntity(list ?: emptyList())
+    private fun toViewEntity(response: MovieDiscoverResponse?) = MovieDiscoverViewEntity(listOf(
+        MovieCategory(1,"Popular", response?.results ?: emptyList(), response?.page)
+    ))
 }
