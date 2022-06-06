@@ -5,6 +5,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.ImageView
 import androidx.databinding.BindingAdapter
+import com.squareup.picasso.NetworkPolicy
 import com.squareup.picasso.Picasso
 
 @BindingAdapter("imageUrl")
@@ -13,6 +14,7 @@ fun ImageView.loadImage(url: String?) {
         clipToOutline = true
         Picasso.with(context)
             .load(url)
+            .fit()
             .into(this)
     }
 }
