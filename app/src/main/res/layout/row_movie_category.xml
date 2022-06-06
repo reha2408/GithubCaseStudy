@@ -49,7 +49,7 @@
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         tools:listitem="@layout/row_movie"
         tools:visibility="visible"
-        app:setMovieList="@{entity.movieList}"/>
+        />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

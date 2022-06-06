@@ -6,9 +6,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import com.reha.casestudy.BR
 import com.reha.casestudy.R
 import com.reha.casestudy.databinding.MovieHomeFragmentBinding
-import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.moviedb.data.model.Movie
-import com.reha.casestudy.feature.moviedb.data.model.MovieCategory
 import com.reha.casestudy.feature.moviedb.presentation.MovieDbMainActivity
 import com.rtx.framework.base.BaseFragment
 import com.rtx.framework.extension.observeLiveData
@@ -40,8 +38,8 @@ class MovieHomeFragment : BaseFragment<MovieHomeViewModel, MovieHomeFragmentBind
         viewModel.initDiscoverMovies()
     }
 
-    private fun onMovieSelected(item: MovieCategory) {
-        // (activity as MovieDbMainActivity).showRepoDetailPage(item)
+    private fun onMovieSelected(item: Movie) {
+        (activity as MovieDbMainActivity).showMovieDetailPage(item)
     }
 
     override fun getLayoutId() = R.layout.movie_home_fragment
