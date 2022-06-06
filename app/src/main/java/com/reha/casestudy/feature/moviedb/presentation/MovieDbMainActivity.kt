@@ -5,7 +5,6 @@ import android.view.View.INVISIBLE
 import android.view.View.VISIBLE
 import android.widget.FrameLayout
 import com.reha.casestudy.R
-import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.moviedb.data.model.Movie
 import com.reha.casestudy.feature.moviedb.presentation.moviedetail.MovieDetailFragment
 import com.reha.casestudy.feature.moviedb.presentation.movielist.MovieHomeFragment
@@ -32,7 +31,7 @@ class MovieDbMainActivity : BaseActivity() {
     fun showMovieDetailPage(movie: Movie) {
         val fragment = newInstance<MovieDetailFragment>("movie" to movie)
         supportFragmentManager.beginTransaction()
-            .replace(R.id.container, fragment, fragment.TAG)
+            .add(R.id.container, fragment, fragment.TAG)
             .addToBackStack(fragment.TAG)
             .commitAllowingStateLoss()
     }
