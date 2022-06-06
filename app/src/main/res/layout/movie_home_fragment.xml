@@ -35,7 +35,6 @@
             app:layout_constraintEnd_toEndOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             tools:listitem="@layout/row_movie_category"
-            android:visibility="@{!viewModel.isNoData}"
             tools:visibility="visible"/>
 
     </androidx.constraintlayout.widget.ConstraintLayout>

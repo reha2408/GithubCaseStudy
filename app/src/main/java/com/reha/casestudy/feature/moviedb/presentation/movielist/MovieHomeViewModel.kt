@@ -15,15 +15,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class MovieHomeViewModel @Inject constructor(
-    val movieDbDiscover: MovieDbDiscover,
-    private val pref: SharedPreferences
+    private val movieDbDiscover: MovieDbDiscover
 ) : BaseViewModel() {
 
-    val isNoData = ObservableField<Boolean>(false)
-    val noDataText = ObservableField("")
-
-    private val movieHomeList = MutableLiveData<List<MovieCategory>>()
-    val movieHomeListLiveData: LiveData<List<MovieCategory>> get() = movieHomeList
+    private val movieHomeList = MutableLiveData<MutableList<MovieCategory>>()
+    val movieHomeListLiveData: LiveData<MutableList<MovieCategory>> get() = movieHomeList
 
     val entity: MovieDiscoverViewEntity = MovieDiscoverViewEntity()
 
@@ -35,6 +31,6 @@ class MovieHomeViewModel @Inject constructor(
 
     fun handleMovieCategory(movieCategory: MovieCategory) {
         entity.movieCategories.find { it.discoverType.id == movieCategory.discoverType.id }?.movieList?.addAll(movieCategory.movieList)
-        movieHomeList.value = entity.movieCategories
+        movieHomeList.value = entity.movieCategories.toMutableList()
     }
 }

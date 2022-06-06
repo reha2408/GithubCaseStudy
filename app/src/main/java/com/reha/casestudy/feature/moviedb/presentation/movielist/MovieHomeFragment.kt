@@ -27,7 +27,7 @@ class MovieHomeFragment : BaseFragment<MovieHomeViewModel, MovieHomeFragmentBind
 
     private fun observeViewModel() = viewModel.run {
         observeLiveData(movieHomeListLiveData) {
-            movieHomeAdapter.submitList(it)
+            movieHomeAdapter.submitList(it.toList())
         }
     }
 
