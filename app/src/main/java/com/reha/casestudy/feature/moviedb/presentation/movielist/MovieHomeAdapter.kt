@@ -13,7 +13,7 @@ import com.rtx.framework.base.BaseViewHolder
 import com.rtx.framework.extension.createDiffCallback
 
 class MovieHomeAdapter(private val itemClickListener: (Movie) -> Unit) : BaseListAdapter<MovieCategory>(
-    createDiffCallback { oldItem, newItem -> oldItem.discoverType.id == newItem.discoverType.id }
+    createDiffCallback { oldItem, newItem -> false }
 ) {
     private val viewPool = RecyclerView.RecycledViewPool()
 
@@ -33,6 +33,7 @@ class MovieCategoryViewHolder(
 
     override fun bind(item: MovieCategory) {
         binding.entity = item
+        binding.executePendingBindings()
         binding.movieCategoryList.run {
             setRecycledViewPool(viewPool)
             if (adapter == null) {
@@ -44,7 +45,7 @@ class MovieCategoryViewHolder(
                 adapter = movieCategoryAdapter
             }
         }
-        binding.executePendingBindings()
+
     }
 }
 

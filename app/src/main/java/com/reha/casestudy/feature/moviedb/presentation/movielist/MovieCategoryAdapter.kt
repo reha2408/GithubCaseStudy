@@ -9,7 +9,7 @@ import com.rtx.framework.base.BaseViewHolder
 import com.rtx.framework.extension.createDiffCallback
 
 class MovieCategoryAdapter(itemClickListener: (Movie) -> Unit) : BaseListAdapter<Movie>(
-    createDiffCallback { oldItem, newItem -> oldItem.id == newItem.id },
+    createDiffCallback { oldItem, newItem -> oldItem == newItem},
     itemClickListener
 ) {
     override fun createViewHolder(

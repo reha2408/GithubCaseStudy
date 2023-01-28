@@ -34,8 +34,9 @@ class MovieHomeFragment : BaseFragment<MovieHomeViewModel, MovieHomeFragmentBind
         binding.run {
             movieHomeList.layoutManager = llManager
             movieHomeList.adapter = movieHomeAdapter
+            movieHomeList.itemAnimator = null
         }
-        viewModel.initDiscoverMovies()
+        viewModel.initDiscoverMovies2()
     }
 
     private fun onMovieSelected(item: Movie) {
