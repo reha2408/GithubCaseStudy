@@ -11,8 +11,8 @@ fun main() {
     println(roman)
     println(int)
 
-    val t = "cab" // "aabccccd"
-    val p = "c*a*b" // "a*bc*d"
+    val t = "mississippi" // "aabccccd"
+    val p = "mis*is*p*." // "a*bc*d"
     println(isMatch(t,p))
 }
 
@@ -105,6 +105,14 @@ fun isMatch(s: String, p: String): Boolean {
         x = x.replaceFirst('*', x[it - 1])
     }
 
+    for (i in 0..astIndices.lastIndex) {
+        astIndices[i] -= i+1
+    }
+
+    astIndices.forEach {
+        x = x.removeRange(it, it+1)
+    }
+
     if (astIndices.isEmpty()) {
         return t == x
     }
@@ -124,6 +132,8 @@ fun isMatch(s: String, p: String): Boolean {
         }
     }
 
+    tokens = tokens.filterNot { it.first.isEmpty() } as MutableList<Pair<String, Boolean>>
+
     var grandCheck = true
     tokens.forEach {
         if (it.second) {
@@ -142,7 +152,7 @@ fun isMatch(s: String, p: String): Boolean {
             }
             grandCheck = check
         } else {
-            grandCheck = it.first == t.substring(0, it.first.length)
+            grandCheck = it.first == "." || it.first == t.substring(0, it.first.length)
             t = t.substring(it.first.length)
         }
         if (!grandCheck)
