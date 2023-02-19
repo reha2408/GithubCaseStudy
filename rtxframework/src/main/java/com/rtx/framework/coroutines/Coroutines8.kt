@@ -9,9 +9,9 @@ import kotlin.system.measureTimeMillis
  * the standard lazy function in cases when computation of the value involves suspending functions.
  */
 fun main() {
-    //ex25()
-    //ex26()
-    //ex27()
+    // ex25()
+    // ex26()
+    // ex27()
     ex28()
 }
 

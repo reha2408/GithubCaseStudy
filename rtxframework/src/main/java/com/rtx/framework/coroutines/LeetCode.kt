@@ -13,15 +13,14 @@ fun main() {
 
     val t = "mississippi" // "aabccccd"
     val p = "mis*is*p*." // "a*bc*d"
-    println(isMatch(t,p))
+    println(isMatch(t, p))
 }
 
 fun isPalindrome(x: Int): Boolean {
-    if (x < 0) { return false }
-    else {
+    if (x < 0) { return false } else {
         val str = x.toString()
-        for(i in 0..str.length/2) {
-            if (str[i] != str[str.length-1 - i])
+        for (i in 0..str.length / 2) {
+            if (str[i] != str[str.length - 1 - i])
                 return false
         }
         return true
@@ -69,7 +68,7 @@ fun romanToInt(roman: String): Int {
 }
 
 fun intToRoman(num: Int): String {
-    val numbs = listOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4 , 1)
+    val numbs = listOf(1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1)
     val romans = listOf("M", "CM", "D", "CD", "C", "XC", "L", "XL", "X", "IX", "V", "IV", "I")
 
     var str = ""
@@ -106,11 +105,11 @@ fun isMatch(s: String, p: String): Boolean {
     }
 
     for (i in 0..astIndices.lastIndex) {
-        astIndices[i] -= i+1
+        astIndices[i] -= i + 1
     }
 
     astIndices.forEach {
-        x = x.removeRange(it, it+1)
+        x = x.removeRange(it, it + 1)
     }
 
     if (astIndices.isEmpty()) {

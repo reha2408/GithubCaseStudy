@@ -64,7 +64,7 @@ fun ex11() = runBlocking { // parent
 }
 
 fun ex12() = runBlocking {
-    launch(Dispatchers.Default) {  // outer scope
+    launch(Dispatchers.Default) { // outer scope
         val str = doThings12()
         println(str)
     }
@@ -72,7 +72,7 @@ fun ex12() = runBlocking {
 
 suspend fun doThings12() = coroutineScope {
     // this scope inherits the context from the outer scope
-    val d = async {   // nested coroutine started with the inherited context
+    val d = async { // nested coroutine started with the inherited context
         delay(1000L)
         "Reha"
     }

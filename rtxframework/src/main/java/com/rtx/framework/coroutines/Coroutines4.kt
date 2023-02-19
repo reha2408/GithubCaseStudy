@@ -22,16 +22,16 @@ import kotlinx.coroutines.channels.Channel
  * A channel can suspend send and receive operations.
  * This happens when the channel is empty or full (the channel's size might be constrained, and then it can be full).
  *
-    interface SendChannel<in E> {
-        suspend fun send(element: E)
-        fun close(): Boolean
-    }
+ interface SendChannel<in E> {
+ suspend fun send(element: E)
+ fun close(): Boolean
+ }
 
-    interface ReceiveChannel<out E> {
-        suspend fun receive(): E
-    }
+ interface ReceiveChannel<out E> {
+ suspend fun receive(): E
+ }
 
-    interface Channel<E> : SendChannel<E>, ReceiveChannel<E>
+ interface Channel<E> : SendChannel<E>, ReceiveChannel<E>
  *
  * Create a channel and give it;
  * to producers as a SendChannel instance
@@ -66,10 +66,10 @@ import kotlinx.coroutines.channels.Channel
  *   - so the receiver will always get only the latest element.
  *   - send call will never suspend.
  *
-    val rendezvousChannel = Channel<String>() // By default, a "Rendezvous" channel is created.
-    val bufferedChannel = Channel<String>(10)
-    val conflatedChannel = Channel<String>(CONFLATED)
-    val unlimitedChannel = Channel<String>(UNLIMITED)
+ val rendezvousChannel = Channel<String>() // By default, a "Rendezvous" channel is created.
+ val bufferedChannel = Channel<String>(10)
+ val conflatedChannel = Channel<String>(CONFLATED)
+ val unlimitedChannel = Channel<String>(UNLIMITED)
  *
  *
  */
@@ -144,8 +144,8 @@ suspend fun loadContributorsChannels(
 
 suspend fun getRepoIds() = coroutineScope {
     val d = async {
-       delay(1000L)
-       listOf(1, 2, 3)
+        delay(1000L)
+        listOf(1, 2, 3)
     }
     d.await()
 }

@@ -73,7 +73,7 @@ fun ex8() = runBlocking {
 
 suspend fun doListAll() = coroutineScope {
     val deferredList = (1..3).map {
-         async {
+        async {
             delay(1000L * it)
             println("Loading $it")
             it
@@ -117,5 +117,3 @@ suspend fun doLoadData() = coroutineScope {
 // should be called on the main UI thread.
 // so we call it with the context of Dispatchers.Main
 fun updateListUi(list: List<Int>) = list.forEach { println(it) }
-
-
