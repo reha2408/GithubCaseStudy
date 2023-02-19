@@ -13,5 +13,5 @@ class MovieDbDataRepository @Inject constructor(
 ) : MovieDbRepository {
 
     override fun discover(request: MovieDiscoverRequest): Single<Response<MovieDiscoverResponse>> =
-       remoteDataSource.discover(request)
+        remoteDataSource.discover(request)
 }

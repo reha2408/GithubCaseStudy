@@ -10,6 +10,4 @@ import kotlinx.parcelize.Parcelize
 data class MovieDiscoverResponse(
     @SerializedName("page") val page: Int? = null,
     @SerializedName("results") val results: List<Movie>? = null
-) : BaseResponse(), Parcelable {
-
-}
+) : BaseResponse(), Parcelable

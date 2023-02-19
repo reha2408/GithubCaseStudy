@@ -11,7 +11,6 @@ import dagger.hilt.android.components.ViewModelComponent
 import dagger.hilt.android.scopes.ViewModelScoped
 import retrofit2.Retrofit
 
-
 @Module
 @InstallIn(ViewModelComponent::class)
 class MovieDbModule {

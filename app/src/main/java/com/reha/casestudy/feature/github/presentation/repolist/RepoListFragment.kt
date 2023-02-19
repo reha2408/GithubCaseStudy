@@ -4,10 +4,10 @@ import android.os.Bundle
 import android.view.View
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.reha.casestudy.BR
-import com.reha.casestudy.feature.github.presentation.GithubMainActivity
 import com.reha.casestudy.R
 import com.reha.casestudy.databinding.RepoListFragmentBinding
 import com.reha.casestudy.feature.github.data.model.Repo
+import com.reha.casestudy.feature.github.presentation.GithubMainActivity
 import com.rtx.framework.base.BaseFragment
 import com.rtx.framework.extension.hideSoftKeyboard
 import com.rtx.framework.extension.observeLiveData

@@ -45,11 +45,10 @@ class MovieCategoryViewHolder(
                 adapter = movieCategoryAdapter
             }
         }
-
     }
 }
 
-class SpacingItemDecoration(private val item: MovieCategory): RecyclerView.ItemDecoration() {
+class SpacingItemDecoration(private val item: MovieCategory) : RecyclerView.ItemDecoration() {
     override fun getItemOffsets(
         outRect: Rect,
         view: View,
@@ -57,7 +56,7 @@ class SpacingItemDecoration(private val item: MovieCategory): RecyclerView.ItemD
         state: RecyclerView.State
     ) {
         outRect.left = 20
-        if(parent.getChildAdapterPosition(view) == item.movieList.lastIndex) {
+        if (parent.getChildAdapterPosition(view) == item.movieList.lastIndex) {
             outRect.right = 20
         } else {
             outRect.right = 0

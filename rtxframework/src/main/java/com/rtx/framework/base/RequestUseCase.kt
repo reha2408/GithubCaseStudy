@@ -22,4 +22,13 @@ abstract class RequestUseCase<R, Params> : BaseUseCase() {
                 .subscribeWith(observer)
         )
     }
+
+    fun executeSilently(observer: BaseDisposableObserver<R>, params: Params) {
+        add(
+            buildUseCaseObservable(params)
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribeOn(Schedulers.io())
+                .subscribeWith(observer)
+        )
+    }
 }

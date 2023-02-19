@@ -36,7 +36,7 @@ class MovieHomeFragment : BaseFragment<MovieHomeViewModel, MovieHomeFragmentBind
             movieHomeList.adapter = movieHomeAdapter
             movieHomeList.itemAnimator = null
         }
-        viewModel.initDiscoverMovies2()
+        viewModel.initDiscoverMovies()
     }
 
     private fun onMovieSelected(item: Movie) {

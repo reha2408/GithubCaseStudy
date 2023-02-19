@@ -5,7 +5,6 @@ import android.view.View
 import com.reha.casestudy.BR
 import com.reha.casestudy.R
 import com.reha.casestudy.databinding.MovieDetailFragmentBinding
-import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.moviedb.data.model.Movie
 import com.rtx.framework.base.BaseFragment
 import dagger.hilt.android.AndroidEntryPoint
