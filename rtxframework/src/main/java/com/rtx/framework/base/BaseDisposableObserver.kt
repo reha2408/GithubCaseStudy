@@ -15,7 +15,7 @@ abstract class BaseDisposableObserver<R>(val baseViewModel: BaseViewModel) : Dis
 
     override fun onSuccess(response: Response<R>) {
         baseViewModel.progressLiveData.postValue(ResponseSubscriptionStatus.FINISHED)
-        when (val code = getCode(response)) {
+        when (getCode(response)) {
             ResponseCode.SUCCESS -> handleSuccess(response.body())
             else -> handleError(response.body(), response.code())
         }

@@ -16,11 +16,11 @@ apply from: "${rootProject.projectDir}/scripts/tools.gradle"
 apply from: "${rootProject.projectDir}/scripts/jacoco_coverage.gradle"
 
 android {
-    compileSdkVersion 31
+    compileSdkVersion 33
 
     defaultConfig {
         minSdk 21
-        targetSdkVersion 31
+        targetSdkVersion 33
 
         // testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles "consumer-rules.pro"
@@ -30,6 +30,7 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            crunchPngs false
         }
     }
     buildFeatures {
