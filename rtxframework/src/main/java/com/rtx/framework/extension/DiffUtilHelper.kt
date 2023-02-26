@@ -2,10 +2,10 @@ package com.rtx.framework.extension
 
 import androidx.recyclerview.widget.DiffUtil
 
-inline fun <T: Any?> createDiffCallback(crossinline itemCheck: (oldItem: T, newItem: T) -> Boolean) =
+inline fun <T : Any?> createDiffCallback(crossinline itemCheck: (oldItem: T, newItem: T) -> Boolean) =
     createDiffCallback(itemCheck, itemCheck)
 
-inline fun <T: Any> createDiffCallback(
+inline fun <T : Any> createDiffCallback(
     crossinline itemCheck: (oldItem: T, newItem: T) -> Boolean,
     crossinline contentCheck: (oldItem: T, newItem: T) -> Boolean
 ) = object : DiffUtil.ItemCallback<T>() {
