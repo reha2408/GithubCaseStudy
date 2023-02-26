@@ -13,6 +13,10 @@
         <item name="materialCardViewStyle">@style/AppTheme.CardViewStyle</item>
     </style>
 
+    <style name="AppTheme.Github" parent="AppTheme">
+        <item name="android:textColorPrimary">@color/primaryTextColorGithub</item>
+    </style>
+
     <!-- Widgets -->
 
     <style name="AppTheme.ToolbarStyle" parent="Widget.MaterialComponents.Toolbar">

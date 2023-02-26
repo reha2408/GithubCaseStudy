@@ -13,7 +13,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".feature.github.presentation.GithubMainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme.Github">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -21,7 +22,8 @@
         </activity>
 
         <activity android:name=".feature.moviedb.presentation.MovieDbMainActivity"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/AppTheme">
         </activity>
     </application>
 

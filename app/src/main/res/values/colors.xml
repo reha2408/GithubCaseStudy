@@ -6,6 +6,7 @@
     <color name="secondaryLightColor">#a4a4a4</color>
     <color name="secondaryDarkColor">#494949</color>
     <color name="primaryTextColor">#ffffff</color>
+    <color name="primaryTextColorGithub">#000000</color>
     <color name="secondaryTextColor">#686868</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
