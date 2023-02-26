@@ -21,10 +21,15 @@ import javax.inject.Singleton
 @InstallIn(SingletonComponent::class)
 class NetworkModule {
 
+    companion object {
+        const val GITHUB_API_URL = "https://api.github.com/"
+        const val MOVIE_API_URL = "https://api.themoviedb.org/3/"
+    }
+
     @Provides
     @Singleton
     fun provideBaseUrl(): HttpUrl? {
-        return "https://api.themoviedb.org/3/".toHttpUrlOrNull()
+        return GITHUB_API_URL.toHttpUrlOrNull()
     }
 
     @Provides

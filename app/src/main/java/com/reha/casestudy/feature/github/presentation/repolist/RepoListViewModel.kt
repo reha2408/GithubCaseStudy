@@ -7,6 +7,8 @@ import androidx.lifecycle.MutableLiveData
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
 import com.reha.casestudy.feature.github.domain.interactor.GithubApiSearch
+import com.reha.casestudy.feature.github2.domain.interactor.GithubApiSearchFlow
+import com.reha.casestudy.feature.github2.presentation.GithubApiSearchFlowObserver
 import com.rtx.framework.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
@@ -14,6 +16,7 @@ import javax.inject.Inject
 @HiltViewModel
 class RepoListViewModel @Inject constructor(
     val githubApiSearch: GithubApiSearch,
+    val githubApiSearchFlow: GithubApiSearchFlow,
     private val pref: SharedPreferences
 ) : BaseViewModel() {
 
@@ -23,8 +26,12 @@ class RepoListViewModel @Inject constructor(
     private val repoList = MutableLiveData<List<Repo>>()
     val repoListLiveData: LiveData<List<Repo>> get() = repoList
 
-    fun searchList(searchText: String) {
-        githubApiSearch.execute(GithubApiSearchObserver(this), GithubApiSearch.Params(searchText))
+    fun searchList(searchText: String, useFlow: Boolean = true) {
+        if (useFlow) {
+            githubApiSearchFlow.execute(GithubApiSearchFlowObserver(this), GithubApiSearchFlow.Params(searchText))
+        } else {
+            githubApiSearch.execute(GithubApiSearchObserver(this), GithubApiSearch.Params(searchText))
+        }
     }
 
     fun handleSearchListError(errorMessage: String) {

@@ -7,6 +7,7 @@ import com.reha.casestudy.BaseUnitTest
 import com.reha.casestudy.feature.github.data.model.Repo
 import com.reha.casestudy.feature.github.data.response.SearchResultViewEntity
 import com.reha.casestudy.feature.github.domain.interactor.GithubApiSearch
+import com.reha.casestudy.feature.github2.domain.interactor.GithubApiSearchFlow
 import com.reha.casestudy.getOrAwaitValue
 import org.junit.Assert.assertEquals
 import org.junit.Test
@@ -22,6 +23,9 @@ class RepoListViewModelTest : BaseUnitTest() {
     @Mock
     lateinit var sharedPreferences: SharedPreferences
 
+    @Mock
+    lateinit var githubApiSearchFlow: GithubApiSearchFlow
+
     @InjectMocks
     @Spy
     lateinit var vm: RepoListViewModel
@@ -32,10 +36,22 @@ class RepoListViewModelTest : BaseUnitTest() {
         val searchText = "reha2408"
 
         // when
-        vm.searchList(searchText)
+        vm.searchList(searchText, false)
 
         // then
         verify(githubApiSearch).execute(any(), any())
+    }
+
+    @Test
+    fun `verify search success on usecase with flow`() {
+        // given
+        val searchText = "reha2408"
+
+        // when
+        vm.searchList(searchText)
+
+        // then
+        verify(githubApiSearchFlow).execute(any(), any())
     }
 
     @Test
